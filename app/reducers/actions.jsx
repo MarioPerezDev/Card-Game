@@ -62,3 +62,11 @@ export function finishApp(finished = true){
     finished:finished,
   };
 }
+
+export function hola(){
+	return { type: "HOLA" }
+}
+
+export function newRound(){
+  return { type:'RONDA'}
+}

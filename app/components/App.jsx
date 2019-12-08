@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {GLOBAL_CONFIG} from '../config/config.js';
 import * as I18n from '../vendors/I18n.js';
 import * as SAMPLES from '../config/samples.js';
-import * as GAME from './../assets/cards.js'
+import * as GAME from './../assets/gameSettings.js'
 
 import SCORM from './SCORM.jsx';
 import Header from './Header.jsx';
@@ -35,7 +35,7 @@ export class App extends React.Component {
       );
       if(this.props.wait_for_user_profile !== true){
         appContent = (
-          <Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n}/>
+          <Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking}  quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n}/>
         );
       }
     } else {
@@ -45,7 +45,7 @@ export class App extends React.Component {
     }
 
     if(GAME){
-       game = (<Game dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} game={GAME.cards} config={GLOBAL_CONFIG} I18n={I18n}/>)
+       game = (<Game dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} settings={this.props.settings}  configs={GAME.gameSettings} config={GLOBAL_CONFIG} I18n={I18n}/>)
   }
     return (
       <div>
