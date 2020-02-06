@@ -14,19 +14,19 @@ export default class Card extends React.Component {
     return (
       <div className={cardClassName}>
         <div className="card-top row">
-            <div id="number" className="card-number column">
+          <div id="number" className="card-number column">
             {this.props.number}
-            </div>
-            <div className="card-name column">
+          </div>
+          <div className="card-name column">
             {this.props.name}
-            </div>
-            <div className="card-power column">
+          </div>
+          <div className="card-power column">
             {this.props.power}
-            </div>
+          </div>
         </div>
 
         <div className="card-image">
-            <img src={this.props.image} alt="cardimage"/>
+          <img src={this.props.image} alt="cardimage"/>
         </div>
         <div className="card-power-text">
           <p>

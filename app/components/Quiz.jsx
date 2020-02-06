@@ -72,8 +72,8 @@ export default class Quiz extends React.Component {
     let isLastQuestion = (this.state.current_question_index === this.state.quiz.questions.length);
 
     let objective = this.props.tracking.objectives["Question" + (this.state.current_question_index)];
-    console.log(this.props.tracking)
-    console.log(this.props.tracking.objectives["Question" + (this.state.current_question_index)])
+    console.log(this.props.tracking);
+    console.log(this.props.tracking.objectives["Question" + (this.state.current_question_index)]);
     let onNextQuestion = this.onNextQuestion.bind(this);
     let onResetQuiz = this.onResetQuiz.bind(this);
     let currentQuestionRender = "";
