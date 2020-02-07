@@ -23,7 +23,6 @@ export class App extends React.Component {
   }
   render(){
     let game = "";
-    let appCards = "";
     let appHeader = "";
     let appContent = "";
 
@@ -51,9 +50,6 @@ export class App extends React.Component {
           {appHeader}
           {game}
           {appContent}
-          <div className="row1">
-            {appCards}
-          </div>
         </div>
       </div>
     );

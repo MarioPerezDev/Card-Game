@@ -1,4 +1,5 @@
 import React from 'react';
+import {Row, Col, Container} from 'react-bootstrap';
 
 export default class Card extends React.Component {
   constructor(props){
@@ -13,26 +14,29 @@ export default class Card extends React.Component {
     */
     return (
       <div className={cardClassName}>
-        <div className="card-top row">
-          <div id="number" className="card-number column">
+        <Container>
+        <Row style={{marginTop:"5px"}}>
+          <Col id="number" className="card-number">
             {this.props.number}
-          </div>
-          <div className="card-name column">
+          </Col>
+          <Col xs={8} className="card-name">
             {this.props.name}
-          </div>
-          <div className="card-power column">
+          </Col>
+          <Col className="card-power">
             {this.props.power}
-          </div>
-        </div>
-
-        <div className="card-image">
-          <img src={this.props.image} alt="cardimage"/>
-        </div>
-        <div className="card-power-text">
-          <p>
+          </Col>
+        </Row>
+        <Row className="card-image">
+          <Col>
+            <img src={this.props.image} alt="cardimage"/>
+          </Col>
+        </Row>
+        <Row className="card-power-text">
+          <Col>
             {this.props.powerinfo}
-          </p>
-        </div>
+          </Col>
+        </Row>
+        </Container>
       </div>
     );
   }

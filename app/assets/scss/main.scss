@@ -31,123 +31,48 @@ div.header_wrapper img {
 }
 
 .card{
-  margin-bottom: 200px;
   max-width: 300px;
   max-height: 600px;
   text-align: center;
-  border: 4px groove #18608F;
-  border-radius: 12px;
-  background-color: #5BD999;
+  border: 4px groove #18608F!important;
+  border-radius: 12px!important;
+  background-color: #5BD999!important;
 }
+
+
 .card p{
   text-align: justify;
   margin:10px;
   color: white;
 }
 
+
 .card img{
-  margin:5px;
-  margin-top:0px;
-  margin-bottom:0px;
-  width:278px;
+  width:100%;
   border-radius: 3px;
   border: 1px groove #18608F;
+  margin-top:5px;
+  margin-bottom:5px;
 }
+
 
 .card-power-text{
   background-color: #54ba86;
-  margin:10px;
-  margin-top: 5px;
-  border: 2px groove #18608F;
-
-
+  border-top: 2px groove #18608F;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius:12px;
+  text-align: justify;
 }
-.row{
-    display: table;
-    height: 60px;
-    width: 100%;
-    border-spacing: 10px;
-}
-.column
-{
-    display: table-cell;
-    vertical-align: middle;
-    margin-left: auto;
-    margin-right: auto;
-    padding:8px;
-}
-.row1
-{
-    margin-left: 450px;
-    margin-top: 300px;
-    display: table;
-    border-spacing: 10px; /*Optional*/
-}
-.column1
-{
-    display: table-cell;
-    padding:8px;
-}
-
 
 .card-number{
 font-size: 30px;
 }
 .card-name{
+padding-top:5px;
 font-size: 20px;
+border-radius: 3px;
+border: 1px groove #18608F;
 }
 .card-power{
 font-size: 30px;
-}
-
-.health{
-  width: 80px;
-  height: 80px;
-}
-
-.playerbar-top{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: black;
-  color:white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-}
-
-.playerbar-bottom{
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: black;
-  color:white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-}
-.playerbar-item{
-  display: table-cell;
-  vertical-align: middle;
-  padding:8px;
-  }
-.modal-90w{
-  width: 50%;
-  max-width: 50%!important;
-}
-
-.flex-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.flex-col{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
 }
