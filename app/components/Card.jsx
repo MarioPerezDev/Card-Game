@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Col, Container} from 'react-bootstrap';
+import {newRound} from '../reducers/actions';
 
 export default class Card extends React.Component {
   constructor(props){
@@ -13,16 +14,16 @@ export default class Card extends React.Component {
   }
     */
     return (
-      <div className={cardClassName}>
+      <div className={cardClassName} onClick={() => {if(this.props.currentRound + 1 < this.props.configs.rounds.length){this.props.dispatch(newRound(this.props.power, 3/*should be enemy power*/));}}}>
         <Container>
-        <Row style={{marginTop:"5px"}}>
+        <Row xs={2} style={{marginTop:"5px"}}>
           <Col id="number" className="card-number">
             {this.props.number}
           </Col>
           <Col xs={8} className="card-name">
             {this.props.name}
           </Col>
-          <Col className="card-power">
+          <Col xs={2} className="card-power">
             {this.props.power}
           </Col>
         </Row>

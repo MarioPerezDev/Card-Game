@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-function hola(state = "", action){
+function health(state = 100, action){
   switch (action.type){
-  case 'HOLA':
-    return "Algo";
+  case 'ROUND':
+    return state - action.payload.damage;
   default:
     return state;
   }
@@ -11,7 +11,7 @@ function hola(state = "", action){
 
 function currentRound(state = 0, action){
   switch (action.type){
-  case 'RONDA':
+  case 'ROUND':
     return state + 1;
   default:
     return state;
@@ -19,7 +19,7 @@ function currentRound(state = 0, action){
 }
 
 const settings = (combineReducers({
-hola,
+health,
 currentRound
 }));
 

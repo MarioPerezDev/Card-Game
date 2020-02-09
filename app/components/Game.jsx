@@ -23,11 +23,12 @@ export default class Game extends React.Component {
     let appCards = "";
     if(round){
       appCards = (round.owncards.map((card, i) =>
-        <Col sm={4} className="column1" key={i}><Card key={i} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} /></Col>
+        <Col sm={4} className="column1" key={i}><Card key={i} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
       ));}
     return (
       <Container>
       Ronda {this.props.settings.currentRound + 1}
+      Vida restante: {this.props.settings.health}
         <Row>
             {appCards}
         </Row>

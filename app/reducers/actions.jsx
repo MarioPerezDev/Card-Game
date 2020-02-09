@@ -67,6 +67,6 @@ export function hola(){
 	return { type: "HOLA" }
 }
 
-export function newRound(){
-  return { type:'RONDA'}
+export function newRound(damage){
+  return { type:'ROUND', payload: {damage}}
 }
