@@ -36,9 +36,15 @@ div.header_wrapper img {
   text-align: center;
   border: 4px groove #18608F!important;
   border-radius: 12px!important;
+}
+
+.allyCard{
   background-color: #5BD999!important;
 }
 
+.enemyCard{
+  background-color: #ff6961!important;
+}
 
 .card p{
   text-align: justify;
@@ -56,9 +62,18 @@ div.header_wrapper img {
 
 }
 
-
-.card-power-text{
+.allyCard .card-power-text{
   background-color: #54ba86;
+  border-top: 2px groove #18608F;
+  padding-top:10px;
+  padding-bottom:10px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius:12px;
+  text-align: justify;
+}
+
+.enemyCard .card-power-text{
+  background-color: #c23b22;
   border-top: 2px groove #18608F;
   padding-top:10px;
   padding-bottom:10px;
@@ -78,4 +93,16 @@ border: 1px groove #18608F;
 }
 .card-power{
 font-size: 30px;
+}
+
+.allyRow{
+  background-color: #5BD999;
+}
+.enemyRow{
+  background-color: #ff6961;
+}
+
+.enemyPic{
+  width:100%;
+  top:50%;
 }

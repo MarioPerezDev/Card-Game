@@ -1,8 +1,7 @@
 import React from 'react';
 import * as Utils from '../vendors/Utils.js';
 //  import {addObjectives, resetObjectives, finishApp} from './../reducers/actions';
-import {Button, Row, Col, Container} from 'react-bootstrap';
-import {hola, newRound} from '../reducers/actions';
+import {Row, Col} from 'react-bootstrap';
 import Card from './Card.jsx';
 
 //  Equivale al Quiz
@@ -20,24 +19,44 @@ export default class Game extends React.Component {
     let currentRound = this.props.settings.currentRound;
     console.log(this.props)
     let round = this.props.configs.rounds[currentRound];
-    let appCards = "";
+    let ownCards = "";
+    let enemyCard = "";
+
     if(round){
-      appCards = (round.owncards.map((card, i) =>
-        <Col sm={4} className="column1" key={i}><Card key={i} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+      enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemycard.number} name={round.enemycard.name} power={round.enemycard.power} image={round.enemycard.image} powerinfo={round.enemycard.powerinfo}/></Col>
+      ownCards = (round.owncards.map((card, i) =>
+        <Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
       ));}
     return (
-      <Container>
+      <div>
       Ronda {this.props.settings.currentRound + 1}
-      Vida restante: {this.props.settings.health}
-        <Row>
-            {appCards}
+        <Row className="enemyRow">
+        <Col>
+          <img className="enemyPic" src="https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1" alt="cardimage"/>
+          Vida restante: {this.props.settings.ownHealth}
+        </Col>
+        <Col sm={7}>
+          <Row>
+          <Col sm={4}></Col>
+            {enemyCard}
+          <Col sm={4}></Col>
+          </Row>
+          </Col>
+        <Col></Col>
         </Row>
-
-        {//  Esto que está asociado a los botones deberá ir asociado al hacer click a cualquier carta.
-        }
-        <Button onClick={() => {if(currentRound + 1 < this.props.configs.rounds.length){this.props.dispatch(newRound());}}} variant="primary">Primary</Button>;
-        <Button onClick={() => {this.props.dispatch(hola())}} variant="secondary">Secondary</Button>
-      </Container>
+        <Row className="allyRow">
+        <Col>
+        <img className="enemyPic" src="https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1" alt="cardimage"/>
+        Vida restante: {this.props.settings.ownHealth}
+        </Col>
+        <Col sm={7}>
+        <Row>
+            {ownCards}
+        </Row>
+        </Col>
+        <Col></Col>
+        </Row>
+      </div>
 
     );
   }

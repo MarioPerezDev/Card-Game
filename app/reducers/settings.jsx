@@ -1,6 +1,15 @@
 import { combineReducers } from 'redux';
 
-function health(state = 100, action){
+function ownHealth(state = 100, action){
+  switch (action.type){
+  case 'ROUND':
+    return state - action.payload.damage;
+  default:
+    return state;
+  }
+}
+
+function enemyHealth(state = 100, action){
   switch (action.type){
   case 'ROUND':
     return state - action.payload.damage;
@@ -19,7 +28,8 @@ function currentRound(state = 0, action){
 }
 
 const settings = (combineReducers({
-health,
+enemyHealth,
+ownHealth,
 currentRound
 }));
 

@@ -7,14 +7,14 @@ export default class Card extends React.Component {
     super(props);
   }
   render(){
-    let cardClassName = "card";
+    //let cardClassName = "card"; (De momento se usa el que te llega)
     /*
     if (algo que se active al hacerle click){
     cardClassName += " selected"
   }
     */
     return (
-      <div className={cardClassName} onClick={() => {if(this.props.currentRound + 1 < this.props.configs.rounds.length){this.props.dispatch(newRound(this.props.power, 3/*should be enemy power*/));}}}>
+      <div className={this.props.cardClassName+ " card"} onClick={() => {if(this.props.currentRound + 1 < this.props.configs.rounds.length){this.props.dispatch(newRound(this.props.power, 3));}}}>
         <Container>
         <Row xs={2} style={{marginTop:"5px"}}>
           <Col id="number" className="card-number">
