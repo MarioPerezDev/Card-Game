@@ -55,6 +55,7 @@ div.header_wrapper img {
 
 .card img{
   width:100%;
+  max-height:125px;
   border-radius: 3px;
   border: 1px groove #18608F;
   margin-top:10px;
@@ -96,13 +97,31 @@ font-size: 30px;
 }
 
 .allyRow{
+  padding:10px;
   background-color: #5BD999;
 }
 .enemyRow{
+  padding:10px;
   background-color: #ff6961;
 }
 
 .enemyPic{
   width:100%;
   top:50%;
+}
+
+.avatarArea{
+  background-color: #003366;
+  margin-left: 15px;
+  padding:10px;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px groove white;
+}
+
+.avatarText{
+  background-color: #87ceeb;
+  margin-top: 5px;
+  height: 100%;
 }

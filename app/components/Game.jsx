@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Utils from '../vendors/Utils.js';
 //  import {addObjectives, resetObjectives, finishApp} from './../reducers/actions';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Container} from 'react-bootstrap';
 import Card from './Card.jsx';
 
 //  Equivale al Quiz
@@ -31,31 +31,50 @@ export default class Game extends React.Component {
       <div>
       Ronda {this.props.settings.currentRound + 1}
         <Row className="enemyRow">
-        <Col>
-          <img className="enemyPic" src="https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1" alt="cardimage"/>
-          Vida restante: {this.props.settings.ownHealth}
-        </Col>
-        <Col sm={7}>
-          <Row>
-          <Col sm={4}></Col>
-            {enemyCard}
-          <Col sm={4}></Col>
-          </Row>
+          <Col className="avatarArea">
+            <Container>
+            <Row>
+            <img className="enemyPic" src="https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1" alt="cardimage"/>
+            </Row>
+            <Row className="avatarText">
+            <Col>
+              <p>
+              Enemigo: Dimitri
+              </p>
+              <p>
+              Vida restante: {this.props.settings.ownHealth}
+              </p>
+              </Col>
+            </Row>
+            </Container>
           </Col>
-        <Col></Col>
-        </Row>
-        <Row className="allyRow">
-        <Col>
-        <img className="enemyPic" src="https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1" alt="cardimage"/>
-        Vida restante: {this.props.settings.ownHealth}
-        </Col>
-        <Col sm={7}>
-        <Row>
-            {ownCards}
-        </Row>
-        </Col>
-        <Col></Col>
-        </Row>
+
+          <Col xs={7}>
+            <Row>
+              <Col sm={4}></Col>
+                {enemyCard}
+              <Col sm={4}></Col>
+            </Row>
+          </Col>
+          <Col xs={3} className="prueba">
+            <img className="enemyPic" src="https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/settings-512.png" alt="cardimage"/>
+          </Col>
+          </Row>
+
+          <Row className="allyRow">
+            <Col className="avatarArea">
+              <img className="enemyPic" src="https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1" alt="cardimage"/>
+              Vida restante: {this.props.settings.ownHealth}
+            </Col>
+            <Col xs={7}>
+              <Row>
+                  {ownCards}
+              </Row>
+            </Col>
+            <Col xs={3} className="prueba">
+              <img className="enemyPic" src="https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/settings-512.png" alt="cardimage"/>
+            </Col>
+          </Row>
       </div>
 
     );
