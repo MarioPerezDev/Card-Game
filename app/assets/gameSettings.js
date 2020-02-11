@@ -3,6 +3,9 @@ export const gameSettings = {
   "rounds":[
     {
       "roundid":1,
+      "enemyLocation": "desconocido",
+      "enemyName": "Hacker001",
+      "enemyPic":"https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1",
       "enemycard":{
         "number":1,
         "name":"Hackeo en masa",
@@ -34,6 +37,9 @@ export const gameSettings = {
       ]},
     {
       "roundid":2,
+      "enemyLocation": "desconocido",
+      "enemyPic":"https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1",
+      "enemyName": "Hacker002",
       "enemycard":{
         "number":1,
         "name":"Hackeo en masa",

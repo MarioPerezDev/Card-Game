@@ -118,10 +118,63 @@ font-size: 30px;
   border-radius: 5px;
   text-align: center;
   border: 1px groove white;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .avatarText{
   background-color: #87ceeb;
+  text-align: left;
   margin-top: 5px;
   height: 100%;
+  padding: 10px;
+}
+
+.avatarText p{
+  margin:5px;
+}
+
+.downloadArea{
+  margin: 10px;
+}
+.downloadArea img{
+  height: 70%;
+}
+
+.ribbonArea img{
+  width: 100%;
+  padding: 10px;
+}
+.grey{
+  filter: grayscale(100%);
+}
+.menuArea{
+  padding: 0px;
+}
+
+.speech-bubble {
+	position: relative;
+  background: #bb244a;
+  border: 1px groove white;
+  border-radius: .4em;
+  color: white;
+  height: 90%;
+  padding: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 33px solid transparent;
+	border-right-color: white;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -16.5px;
+	margin-left: -33px;
 }
