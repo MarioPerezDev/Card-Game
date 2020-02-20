@@ -40,8 +40,9 @@ export class App extends React.Component {
         <FinishScreen dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n}/>
       );
     }
+    console.log(this.props.tracking)
     if(GAME){
-      game = (<Game dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} settings={this.props.settings} configs={GAME.gameSettings} config={GLOBAL_CONFIG} I18n={I18n}/>);
+      game = (<Game dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} game={this.props.game} configs={GAME.gameSettings} config={GLOBAL_CONFIG} I18n={I18n}/>);
     }
     return (
       <div>

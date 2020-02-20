@@ -1,50 +1,59 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {Modal, Row, Col} from 'react-bootstrap';
 
-export default function Shop() {
-  const [show, setShow] = React.useState(false);
+export default class Shop extends React.Component {
+	constructor(props, context) {
+		super(props, context);
 
-    return (
-      <div>
-        <Button variant="primary" onClick={() => setShow(true)}>
-          Shop
-        </Button>
+		this.handleShow = this.handleShow.bind(this);
+		this.handleClose = this.handleClose.bind(this);
 
-        <Modal
-          show={show}
-          onHide={() => setShow(false)}
-          dialogClassName="modal-90w"
-          aria-labelledby="example-custom-modal-styling-title"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="example-custom-modal-styling-title">
-              <div>
-                Shop
-              </div>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-           <div className="flex-container">
-              <div className="flex-col" style={{textAlign:"center"}}>
-               <img style={{width:"100%", height:"100%", textAlign:"center"}} src="https://i.pinimg.com/736x/d1/6e/65/d16e656b8d40f345d574cf3485ffeb00.jpg"/>
-               <Button variant="primary" style={{margin:"10px"}}>Power up</Button>
-              </div>
-              <div className="flex-col" style={{textAlign:"center"}}>
-               <img style={{width:"100%", height:"100%", textAlign:"center"}} src="https://i.pinimg.com/736x/d1/6e/65/d16e656b8d40f345d574cf3485ffeb00.jpg"/>
-               <Button variant="primary" style={{margin:"10px"}}>Shield</Button>
-              </div>
-              <div className="flex-col" style={{textAlign:"center"}}>
-               <img style={{width:"100%", height:"100%", textAlign:"center"}} src="https://i.pinimg.com/736x/d1/6e/65/d16e656b8d40f345d574cf3485ffeb00.jpg"/>
-               <Button variant="primary" style={{margin:"10px"}}>Skip</Button>
-              </div>
-              <div className="flex-col" style={{textAlign:"center"}}>
-               <img style={{width:"100%", height:"100%", textAlign:"center"}} src="https://i.pinimg.com/736x/d1/6e/65/d16e656b8d40f345d574cf3485ffeb00.jpg"/>
-               <Button variant="primary" style={{margin:"10px"}}>Remove</Button>
-              </div>
-            </div>
+		this.state = {
+			show: false,
+		};
+	}
+
+	handleClose() {
+		this.setState({ show: false });
+	}
+
+	handleShow() {
+		this.setState({ show: true });
+	}
+
+	render() {
+		return (
+			<>
+        <img className="clickable" onClick={this.handleShow} src="http://icon-library.com/images/usb-icon-png/usb-icon-png-24.jpg"></img>
+				<Modal size="lg" show={this.state.show} onHide={this.handleClose}>
+					<Modal.Header closeButton>
+						<Modal.Title>Tienda de mejoras</Modal.Title>
+					</Modal.Header>
+					<Modal.Body className="modalBody">
+            <Row className="text-center">
+              <Col lg>
+				<img className="clickable" onClick={this.handleClose} src="https://pngimage.net/wp-content/uploads/2018/05/achievement-icon-png-9.png"></img>
+				<p>Esta es una mejora que ayudará a ganar la partida. Puedes utilizarla en cualquier momento. Estoy alargando el texto para ver cómo se vería.</p>
+              </Col>
+              <Col lg>
+				<img className="clickable" onClick={this.handleClose} src="https://pngimage.net/wp-content/uploads/2018/05/achievement-icon-png-9.png"></img>
+				<p>Esta es una mejora que ayudará a ganar la partida. Puedes utilizarla en cualquier momento. Estoy alargando el texto para ver cómo se vería.</p>              </Col>
+            </Row>
+            <Row className="text-center">
+              <Col lg>
+				<img className="clickable" onClick={this.handleClose} src="https://pngimage.net/wp-content/uploads/2018/05/achievement-icon-png-9.png"></img>
+				<p>Esta es una mejora que ayudará a ganar la partida. Puedes utilizarla en cualquier momento. Estoy alargando el texto para ver cómo se vería.</p>              </Col>
+              <Col lg>
+				<img className="clickable" onClick={this.handleClose} src="https://pngimage.net/wp-content/uploads/2018/05/achievement-icon-png-9.png"></img>
+				<p>Esta es una mejora que ayudará a ganar la partida. Puedes utilizarla en cualquier momento. Estoy alargando el texto para ver cómo se vería.</p>              </Col>
+            </Row>
+
           </Modal.Body>
-        </Modal>
-      </div>
-  );
+					<Modal.Footer className="shopFooter">
+						Seleccione una mejora para comprarla, gastando los bits de descarga indicados.
+					</Modal.Footer>
+				</Modal>
+			</>
+		);
+	}
 }

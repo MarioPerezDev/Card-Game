@@ -3,33 +3,42 @@ import {Row, Col, Container,ProgressBar} from 'react-bootstrap';
 
 export default class Profile extends React.Component {
   render(){
-    let enemyHealthType = "";
+    let healthType = "";
+    let name = "";
+    let health ="";
     if(this.props.health > 50) {
-      enemyHealthType = "success"
+      healthType = "success"
     } else {
       if(this.props.health > 20){
-        enemyHealthType = "warning"
+        healthType = "warning"
       } else {
-        enemyHealthType = "danger"
+        healthType = "danger"
+      }
+    }
+    if(this.props.type === "ally"){
+      name = "Defensor: " + this.props.name;
+      health = <div><p>Vida restante: {this.props.health}</p><ProgressBar variant={healthType} now={this.props.health}/></div>
+    } else {
+      if (this.props.type === "enemy"){
+        name= "Atacante: " + this.props.name;
       }
     }
     return (
         <Container>
-        <Row>
-        <img className="enemyPic" src={this.props.pic} alt="cardimage"/>
+        <Row className="text-center">
+          <Col>
+          <img className="enemyPic" src={this.props.pic} alt="cardimage"/>
+          </Col>
         </Row>
         <Row className="avatarText">
         <Col>
           <p>
-          Enemigo: {this.props.name}
+            {name}
           </p>
           <p>
           Localización: {this.props.location}
           </p>
-          <p>
-          Vida restante: {this.props.health}
-          </p>
-          <ProgressBar variant={enemyHealthType} now={this.props.health} />
+          {health}
           </Col>
         </Row>
         </Container>

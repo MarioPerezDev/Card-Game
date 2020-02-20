@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col, Container} from 'react-bootstrap';
-import {newRound} from '../reducers/actions';
+import {playCard} from '../reducers/actions';
 
 export default class Card extends React.Component {
   constructor(props){
@@ -9,12 +9,12 @@ export default class Card extends React.Component {
   render(){
     //let cardClassName = "card"; (De momento se usa el que te llega)
     /*
-    if (algo que se active al hacerle click){
+    if (algo que se active al hacerle click despues){
     cardClassName += " selected"
   }
     */
     return (
-      <div className={this.props.cardClassName+ " card"} onClick={() => {if(this.props.currentRound + 1 < this.props.configs.rounds.length){this.props.dispatch(newRound(this.props.power));}}}>
+      <div className={this.props.cardClassName+ " card"} onClick={() => {if(this.props.currentRound + 1 < this.props.configs.rounds.length){this.props.dispatch(playCard(this.props.power,this.props.money));}}}>
         <Container>
         <Row xs={2} style={{marginTop:"5px"}}>
           <Col id="number" className="card-number">

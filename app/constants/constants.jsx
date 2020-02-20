@@ -5,6 +5,17 @@ export const INITIAL_STATE = {
     objectives:{},
     finished:false,
   },
+  game:{
+    money:0,
+    health:100,
+    points:0,
+    currentRound:0,
+    achievements:{
+      "first":false,
+      "second":false,
+      "third":false,
+    },
+  },  
   scorm:null,
   user_profile:{
     id:undefined,

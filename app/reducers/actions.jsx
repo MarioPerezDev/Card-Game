@@ -63,10 +63,10 @@ export function finishApp(finished = true){
   };
 }
 
-export function hola(){
-	return { type: "HOLA" }
+export function playCard(damage, roundmoney){
+  return { type:'PLAY_CARDS', payload: {damage, roundmoney}}
 }
 
-export function newRound(damage){
-  return { type:'ROUND', payload: {damage}}
+export function buyPowerUp(index){
+  return { type:'BUY_ITEM', payload: {index}}
 }

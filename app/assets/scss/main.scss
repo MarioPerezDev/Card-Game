@@ -106,7 +106,7 @@ font-size: 30px;
 }
 
 .enemyPic{
-  width:100%;
+  width:70%;
   top:50%;
 }
 
@@ -120,6 +120,7 @@ font-size: 30px;
   border: 1px groove white;
   margin-top: auto;
   margin-bottom: auto;
+  font-size: 1.1em;
 }
 
 .avatarText{
@@ -127,18 +128,24 @@ font-size: 30px;
   text-align: left;
   margin-top: 5px;
   height: 100%;
-  padding: 10px;
+  padding: 8px;
 }
 
 .avatarText p{
-  margin:5px;
+  margin:3px;
 }
 
 .downloadArea{
   margin: 10px;
 }
 .downloadArea img{
-  height: 70%;
+  height: 75%;
+}
+
+.moneyText{
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 1.4em;
 }
 
 .ribbonArea img{
@@ -177,4 +184,20 @@ font-size: 30px;
 	border-top: 0;
 	margin-top: -16.5px;
 	margin-left: -33px;
+}
+.modalBody img{
+ width: 60%;
+ align-items: center;
+}
+.modalBody p{
+  text-align: justify;
+}
+
+.shopFooter{
+  justify-content: flex-start!important;
+  text-align: left;
+}
+
+.clickable{
+  cursor: pointer;
 }
