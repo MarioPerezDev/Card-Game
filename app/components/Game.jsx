@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Utils from '../vendors/Utils.js';
-//  import {addObjectives, resetObjectives, finishApp} from './../reducers/actions';
+import {addObjectives} from './../reducers/actions';
 import {Row, Col} from 'react-bootstrap';
 import Card from './Card.jsx';
 import Shop from './Shop.jsx';
@@ -11,21 +11,22 @@ export default class Game extends React.Component {
   componentDidMount(){
     // Create objectives (One per round in the game)
     let objectives = [];
-    let nQuestions = this.props.configs.rounds.length; // Or something similar, to be determined
+    let nQuestions = this.props.configs.rounds.length;
     for(let i = 0; i < nQuestions; i++){
       objectives.push(new Utils.Objective({id:("Round" + (i + 1)), progress_measure:(1 / nQuestions), score:(1 / nQuestions)}));
     }
-  //  this.props.dispatch(addObjectives(objectives));
+    this.props.dispatch(addObjectives(objectives));
   }
   render(){
     let currentRound = this.props.game.currentRound;
     let round = this.props.configs.rounds[currentRound];
+    let objective = this.props.tracking.objectives["Round" + (currentRound + 1)];
     let ownCards = "";
     let enemyCard = "";
     if(round){
       enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemycard.number} name={round.enemycard.name} power={round.enemycard.power} image={round.enemycard.image} powerinfo={round.enemycard.powerinfo}/></Col>
       ownCards = (round.owncards.map((card, i) =>
-        <Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} money={round.money} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+        <Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} money={round.money} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
       ));}
     return (
       <div>

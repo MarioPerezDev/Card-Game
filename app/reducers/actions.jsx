@@ -63,10 +63,14 @@ export function finishApp(finished = true){
   };
 }
 
-export function playCard(damage, roundmoney){
-  return { type:'PLAY_CARDS', payload: {damage, roundmoney}}
+export function playCard(power, roundmoney){
+  return {type:'PLAY_CARDS', payload: {power, roundmoney}}
 }
 
 export function buyPowerUp(index){
-  return { type:'BUY_ITEM', payload: {index}}
+  return {type:'BUY_ITEM', payload: {index}}
+}
+
+export function startGame(){
+  return {type:'START'}
 }

@@ -2,7 +2,7 @@ export const gameSettings = {
   "title":"game1",
   "rounds":[
     {
-      "roundid":1,
+      "roundid":0,
       "money":30,
       "enemyLocation": "desconocido",
       "enemyName": "Hacker001",
@@ -37,7 +37,7 @@ export const gameSettings = {
       },
       ]},
     {
-      "roundid":2,
+      "roundid":1,
       "money":30,
       "enemyLocation": "desconocido",
       "enemyPic":"https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1",
@@ -72,7 +72,7 @@ export const gameSettings = {
       },
       ]},
       {
-        "roundid":3,
+        "roundid":2,
         "money":30,
         "enemyLocation": "desconocido",
         "enemyName": "Hacker001",
@@ -107,7 +107,7 @@ export const gameSettings = {
         },
         ]},
         {
-          "roundid":4,
+          "roundid":3,
           "money":30,
           "enemyLocation": "desconocido",
           "enemyPic":"https://thenypost.files.wordpress.com/2017/12/171205-hacking-experts-beginning-feature.jpg?quality=80&strip=all&w=618&h=410&crop=1",
@@ -142,7 +142,7 @@ export const gameSettings = {
           },
           ]},
           {
-            "roundid":5,
+            "roundid":4,
             "money":30,
             "enemyLocation": "desconocido",
             "enemyName": "Hacker001",

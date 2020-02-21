@@ -71,6 +71,10 @@ function trackingReducer(state = {}, action){
       newState.finished = action.finished;
     }
     return newState;}
+  case 'START':{
+    newState = JSON.parse(JSON.stringify(state));
+      newState.started = true;
+    return newState;}
   default:
     return state;
   }

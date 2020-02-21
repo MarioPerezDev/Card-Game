@@ -3,10 +3,11 @@ export const INITIAL_STATE = {
     progress_measure:0,
     score:null,
     objectives:{},
-    finished:false,
+    started:false,
   },
   game:{
     money:0,
+    finished:false,
     health:100,
     points:0,
     currentRound:0,
