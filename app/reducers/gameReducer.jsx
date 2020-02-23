@@ -5,7 +5,12 @@ export default function gameReducer(state = {}, action){
   switch (action.type){
   case 'PLAY_CARDS':{
     newState = JSON.parse(JSON.stringify(state));
-    let enemypower = gameSettings.rounds[newState.currentRound].enemycard.power;
+    let currentRound = gameSettings.rounds[newState.currentRound];
+    let enemypower = currentRound.enemyCard.power;
+    let powers = [];
+    for (let i=0; i < currentRound.ownCards.length;i++){
+      powers.push(currentRound.ownCards[i].power)
+    }
     if (enemypower > action.payload.power){
       if(newState.health - (enemypower - action.payload.power)*25 <= 0){
         newState.finished = true;
@@ -14,12 +19,19 @@ export default function gameReducer(state = {}, action){
       }
     }else{
       newState.score = newState.score + (action.payload.power - enemypower)*100;
+      if(action.payload.power === Math.max(...powers)){
+        newState.money = newState.money + (action.payload.power - enemypower)*30
+      }
     }
     newState.currentRound += 1;
-    newState.money = action.payload.roundmoney + newState.money;//Para comprobar que el dinero aumenta
+
     newState.achievements.first = true;//Para comprobar que los logros se visualizan bien
     return newState;
   }
+  case 'BUY_ITEM':{
+    alert("Hola, has comprado el poder" + action.payload.index);
+  }
+  return state;
   case 'FINISH_APP':{
     newState = JSON.parse(JSON.stringify(state));
     newState.finished = true;

@@ -24,9 +24,9 @@ export default class Game extends React.Component {
     let ownCards = "";
     let enemyCard = "";
     if(round){
-      enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemycard.number} name={round.enemycard.name} power={round.enemycard.power} image={round.enemycard.image} powerinfo={round.enemycard.powerinfo}/></Col>
-      ownCards = (round.owncards.map((card, i) =>
-        <Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} money={round.money} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+      enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemyCard.number} name={round.enemyCard.name} power={round.enemyCard.power} image={round.enemyCard.image} powerinfo={round.enemyCard.powerinfo}/></Col>
+      ownCards = (round.ownCards.map((card, i) =>
+        <Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
       ));}
     return (
       <div>
@@ -68,7 +68,7 @@ export default class Game extends React.Component {
                     <p>{this.props.game.money}</p>
                     </Col>
                     <Col>
-                    <Shop></Shop>
+                    <Shop dispatch={this.props.dispatch}></Shop>
                     <p>Descargar mejoras</p>
                     </Col> 
                   </Row>

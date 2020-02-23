@@ -63,8 +63,8 @@ export function finishApp(finished = true){
   };
 }
 
-export function playCard(power, roundmoney){
-  return {type:'PLAY_CARDS', payload: {power, roundmoney}}
+export function playCard(power){
+  return {type:'PLAY_CARDS', payload: {power}}
 }
 
 export function buyPowerUp(index){
