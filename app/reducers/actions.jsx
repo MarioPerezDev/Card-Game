@@ -67,8 +67,8 @@ export function playCard(power){
   return {type:'PLAY_CARDS', payload: {power}}
 }
 
-export function buyPowerUp(index){
-  return {type:'BUY_ITEM', payload: {index}}
+export function buy(index){
+  return {type:'BUY', payload: {index}}
 }
 
 export function startGame(){

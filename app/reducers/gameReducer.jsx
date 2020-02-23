@@ -28,10 +28,28 @@ export default function gameReducer(state = {}, action){
     newState.achievements.first = true;//Para comprobar que los logros se visualizan bien
     return newState;
   }
-  case 'BUY_ITEM':{
-    alert("Hola, has comprado el poder" + action.payload.index);
-  }
-  return state;
+  case 'BUY':{
+    newState = JSON.parse(JSON.stringify(state));
+    switch (action.payload.index){
+      case 1:
+        newState.money = newState.money - 20;
+        newState.powerUps.first = true;
+        break;
+      case 2:
+        newState.money = newState.money - 40;
+        newState.powerUps.second = true;
+        break;
+      case 3:
+        newState.money = newState.money - 80;
+        newState.powerUps.third = true;
+        break;
+      case 4:
+        newState.money = newState.money - 100;
+        newState.powerUps.forth = true;
+        break;
+    }
+  return newState;
+}
   case 'FINISH_APP':{
     newState = JSON.parse(JSON.stringify(state));
     newState.finished = true;

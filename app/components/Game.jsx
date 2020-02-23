@@ -6,6 +6,7 @@ import Card from './Card.jsx';
 import Shop from './Shop.jsx';
 import Profile from './Profile.jsx';
 
+
 //  Equivale al Quiz
 export default class Game extends React.Component {
   componentDidMount(){
@@ -68,7 +69,7 @@ export default class Game extends React.Component {
                     <p>{this.props.game.money}</p>
                     </Col>
                     <Col>
-                    <Shop dispatch={this.props.dispatch}></Shop>
+                    <Shop dispatch={this.props.dispatch} game={this.props.game}></Shop>
                     <p>Descargar mejoras</p>
                     </Col> 
                   </Row>
