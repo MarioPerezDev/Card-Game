@@ -148,6 +148,18 @@ font-size: 30px;
   font-size: 1.4em;
 }
 
+.moneyText p{
+  margin: 0px;
+}
+
+.money{
+  margin: 0px;
+  font-size: 1.8em;
+  color: greenyellow;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  
+}
+
 .ribbonArea img{
   width: 100%;
   padding: 10px;
@@ -200,4 +212,26 @@ font-size: 30px;
 
 .clickable{
   cursor: pointer;
+}
+
+.shop img{
+  padding: 15px;
+  width: 65%;
+}
+.shopItem{
+  margin: 5px;
+}
+
+.currentPowerUp{
+  background-color: greenyellow;
+  border-radius: 3px;
+  border: 3px groove #18608F;
+  padding: 5px;
+}
+.currentPowerUp p{
+  margin: 0px;
+}
+
+.currentPowerUp img{
+  width: 30px;
 }

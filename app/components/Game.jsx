@@ -19,16 +19,37 @@ export default class Game extends React.Component {
     this.props.dispatch(addObjectives(objectives));
   }
   render(){
+    //Useful variables
     let currentRound = this.props.game.currentRound;
     let round = this.props.configs.rounds[currentRound];
     let objective = this.props.tracking.objectives["Round" + (currentRound + 1)];
+    let powerUps = this.props.game.powerUps;
     let ownCards = "";
     let enemyCard = "";
+    let currentPowerUp ="";
     if(round){
       enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemyCard.number} name={round.enemyCard.name} power={round.enemyCard.power} image={round.enemyCard.image} powerinfo={round.enemyCard.powerinfo}/></Col>
       ownCards = (round.ownCards.map((card, i) =>
         <Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
       ));}
+    if (powerUps){
+      if (powerUps.first === true) {
+        currentPowerUp = (
+          <div className ="currentPowerUp">
+          <p>PowerUp activo:</p>
+          <img src="assets/images/shield.png"></img>
+          </div>
+        )
+      }
+      if (powerUps.third === true) {
+        currentPowerUp = (
+          <div className ="currentPowerUp">
+          <p>PowerUp activo:</p>
+          <img src="assets/images/x2.png"></img>
+          </div>
+        )
+      }
+    }
     return (
       <div>
       Ronda {currentRound + 1}
@@ -65,8 +86,9 @@ export default class Game extends React.Component {
                 <Col className="downloadArea text-center">
                   <Row>               
                     <Col className="moneyText">
+                    {currentPowerUp}
                     <p>Bits disponibles:</p>
-                    <p>{this.props.game.money}</p>
+                    <p className="money">{this.props.game.money}</p>
                     </Col>
                     <Col>
                     <Shop dispatch={this.props.dispatch} game={this.props.game}></Shop>
@@ -77,13 +99,13 @@ export default class Game extends React.Component {
               </Row>
               <Row className="ribbonArea">
                 <Col>
-                <img className={this.props.game.achievements.first ? "" : "grey"} src="https://cdn0.iconfinder.com/data/icons/sport-achievment-badges/128/sport_badges-02-512.png"></img>
+                <img className={this.props.game.achievements.first ? "" : "grey"} src="assets/images/medal.png"></img>
                 </Col>
                 <Col>
-                <img className={this.props.game.achievements.second ? "" : "grey"} src="https://c7.uihere.com/icons/959/399/726/achievement-549ff9c1cae4c0b9020f3e40d2aef945.png"></img>
+                <img className={this.props.game.achievements.second ? "" : "grey"} src="assets/images/money.png"></img>
                 </Col>
                 <Col>
-                <img className={this.props.game.achievements.third ? "" : "grey"} src="https://pngimage.net/wp-content/uploads/2018/05/achievement-icon-png-9.png"></img>
+                <img className={this.props.game.achievements.third ? "" : "grey"} src="assets/images/winner.png"></img>
                 </Col>
               </Row>
             </Col>

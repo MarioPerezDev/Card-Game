@@ -25,7 +25,7 @@ export default function gameReducer(state = {}, action){
     }
     newState.currentRound += 1;
 
-    newState.achievements.first = true;//Para comprobar que los logros se visualizan bien
+    // newState.achievements.first = true; El logro se pone en color  
     return newState;
   }
   case 'BUY':{
