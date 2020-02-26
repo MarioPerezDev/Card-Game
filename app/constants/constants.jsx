@@ -16,12 +16,7 @@ export const INITIAL_STATE = {
       "second":false,
       "third":false,
     },
-    powerUps:{
-      "first":false,
-      "second":false,
-      "third":false,
-      "forth":false,
-    },
+    powerUp: "none"
   },  
   scorm:null,
   user_profile:{

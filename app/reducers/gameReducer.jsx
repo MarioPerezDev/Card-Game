@@ -23,6 +23,7 @@ export default function gameReducer(state = {}, action){
         newState.money = newState.money + (action.payload.power - enemypower)*30
       }
     }
+    newState.powerUp = "none"
     newState.currentRound += 1;
 
     // newState.achievements.first = true; El logro se pone en color  
@@ -33,19 +34,19 @@ export default function gameReducer(state = {}, action){
     switch (action.payload.index){
       case 1:
         newState.money = newState.money - 20;
-        newState.powerUps.first = true;
+        newState.powerUp = "shield";
         break;
       case 2:
         newState.money = newState.money - 40;
-        newState.powerUps.second = true;
+        newState.powerUp = "delete";
         break;
       case 3:
         newState.money = newState.money - 80;
-        newState.powerUps.third = true;
+        newState.powerUp = "x2";
         break;
       case 4:
         newState.money = newState.money - 100;
-        newState.powerUps.forth = true;
+        newState.powerUp = "skip";
         break;
     }
   return newState;

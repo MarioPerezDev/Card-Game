@@ -18,37 +18,51 @@ export default class Game extends React.Component {
     }
     this.props.dispatch(addObjectives(objectives));
   }
+  getMiddle(ownCards){
+    let powers = ownCards.map((card)=> card.power);
+
+    let ismiddle = (element) => (element !== Math.max(...powers)) && (element !== Math.min(...powers))
+    
+    return powers.findIndex(ismiddle);
+  }
   render(){
     //Useful variables
     let currentRound = this.props.game.currentRound;
     let round = this.props.configs.rounds[currentRound];
     let objective = this.props.tracking.objectives["Round" + (currentRound + 1)];
-    let powerUps = this.props.game.powerUps;
+    let powerUp = this.props.game.powerUp;
+
     let ownCards = "";
     let enemyCard = "";
     let currentPowerUp ="";
+
+
     if(round){
+      let middleIndex = "";
       enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemyCard.number} name={round.enemyCard.name} power={round.enemyCard.power} image={round.enemyCard.image} powerinfo={round.enemyCard.powerinfo}/></Col>
+      if(powerUp ==="delete"){
+      middleIndex = this.getMiddle(round.ownCards);
+      }
       ownCards = (round.ownCards.map((card, i) =>
-        <Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+      {
+        if(i === middleIndex){
+        return( <Col sm={4} key={i}><Card cardClassName={"allyCard deleted"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+        )}
+        else{
+          return (<Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+          )}
+      }
       ));}
-    if (powerUps){
-      if (powerUps.first === true) {
-        currentPowerUp = (
-          <div className ="currentPowerUp">
-          <p>PowerUp activo:</p>
-          <img src="assets/images/shield.png"></img>
-          </div>
-        )
-      }
-      if (powerUps.third === true) {
-        currentPowerUp = (
-          <div className ="currentPowerUp">
-          <p>PowerUp activo:</p>
-          <img src="assets/images/x2.png"></img>
-          </div>
-        )
-      }
+
+    if (powerUp){
+      if(powerUp !== "none"){
+      currentPowerUp = (
+        <div className ="currentPowerUp">
+        <p>PowerUp activo:</p>
+        <img src={"assets/images/"+ powerUp + ".png"}></img>
+        </div>
+      )   
+      }   
     }
     return (
       <div>

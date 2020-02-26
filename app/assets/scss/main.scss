@@ -167,6 +167,16 @@ font-size: 30px;
 .grey{
   filter: grayscale(100%);
 }
+
+.grey_opacity{
+  filter: grayscale(100%);
+  opacity: 0.4;
+}
+
+.deleted{
+  filter: grayscale(100%);
+  opacity: 0.4;
+}
 .menuArea{
   padding: 0px;
 }
