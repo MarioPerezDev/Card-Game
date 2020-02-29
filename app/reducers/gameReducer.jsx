@@ -12,18 +12,30 @@ export default function gameReducer(state = {}, action){
       powers.push(currentRound.ownCards[i].power)
     }
     if (enemypower > action.payload.power){
-      if(newState.health - (enemypower - action.payload.power)*25 <= 0){
+      let damageReceived = (enemypower - action.payload.power)*25;
+      if(newState.powerUp === "shield"){
+        damageReceived = damageReceived/2;
+        newState.powerUp = "none";
+      }
+      if(newState.health - damageReceived <= 0){
         newState.finished = true;
       }else{
-      newState.health = newState.health - (enemypower - action.payload.power)*25;
+      newState.health = newState.health - damageReceived;
       }
     }else{
-      newState.score = newState.score + (action.payload.power - enemypower)*100;
+      let scoreToAdd = (action.payload.power - enemypower)*100;
+      if(newState.powerUp === "x2"){
+        scoreToAdd *= 2;
+      }
+      newState.points = newState.points + scoreToAdd;
+      console.log(scoreToAdd)
       if(action.payload.power === Math.max(...powers)){
         newState.money = newState.money + (action.payload.power - enemypower)*30
       }
     }
-    newState.powerUp = "none"
+    if(newState.powerUp === "delete" || "x2"){
+      newState.powerUp = "none";
+    }
     newState.currentRound += 1;
 
     // newState.achievements.first = true; El logro se pone en color  
@@ -46,7 +58,7 @@ export default function gameReducer(state = {}, action){
         break;
       case 4:
         newState.money = newState.money - 100;
-        newState.powerUp = "skip";
+        newState.currentRound++;
         break;
     }
   return newState;

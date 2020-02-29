@@ -9,6 +9,20 @@ export default class Card extends React.Component {
   }
   render(){
     let objective = this.props.objective;
+    let dispatchFunction;
+    if (this.props.dispatchable){
+      dispatchFunction = () => {
+        this.props.dispatch(objectiveAccomplished(objective.id, objective.score * 10)); 
+        (this.props.currentRound + 1 < this.props.configs.rounds.length)? this.props.dispatch(playCard(this.props.power)) :this.props.dispatch(finishApp(true))
+      }
+    }else{
+      dispatchFunction = () =>{
+        alert("No puedes utilizar esa carta.")
+      };
+    }
+    
+    
+    
     //let cardClassName = "card"; (De momento se usa el que te llega)
     /*
     if (algo que se active al hacerle click){
@@ -16,7 +30,7 @@ export default class Card extends React.Component {
   }
     */
     return (
-      <div className={this.props.cardClassName+ " card"} onClick={() => {this.props.dispatch(objectiveAccomplished(objective.id, objective.score * 10)); (this.props.currentRound + 1 < this.props.configs.rounds.length)? this.props.dispatch(playCard(this.props.power)) :this.props.dispatch(finishApp(true))}}>
+      <div className={this.props.cardClassName+ " card"} onClick={dispatchFunction}>
         <Container>
         <Row xs={2} style={{marginTop:"5px"}}>
           <Col id="number" className="card-number">

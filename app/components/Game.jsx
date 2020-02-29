@@ -39,17 +39,17 @@ export default class Game extends React.Component {
 
     if(round){
       let middleIndex = "";
-      enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemyCard.number} name={round.enemyCard.name} power={round.enemyCard.power} image={round.enemyCard.image} powerinfo={round.enemyCard.powerinfo}/></Col>
+      enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemyCard.number} dispatchable={false} name={round.enemyCard.name} power={round.enemyCard.power} image={round.enemyCard.image} powerinfo={round.enemyCard.powerinfo}/></Col>
       if(powerUp ==="delete"){
       middleIndex = this.getMiddle(round.ownCards);
       }
       ownCards = (round.ownCards.map((card, i) =>
       {
         if(i === middleIndex){
-        return( <Col sm={4} key={i}><Card cardClassName={"allyCard deleted"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+        return( <Col sm={4} key={i}><Card cardClassName={"allyCard deleted"} key={i} tracking={this.props.tracking} dispatchable={false} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
         )}
         else{
-          return (<Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+          return (<Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} dispatchable={true} number={card.number} name={card.name} power={card.power} image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
           )}
       }
       ));}
@@ -88,7 +88,7 @@ export default class Game extends React.Component {
 
           <Row className="allyRow">
             <Col className="avatarArea">
-              <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name} location={round.enemyLocation} health={this.props.game.health}></Profile>
+              <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name} location={round.enemyLocation} health={this.props.game.health} score={this.props.game.points}></Profile>
             </Col>
             <Col xs={7}>
               <Row>

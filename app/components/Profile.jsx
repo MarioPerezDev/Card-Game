@@ -6,6 +6,7 @@ export default class Profile extends React.Component {
     let healthType = "";
     let name = "";
     let health ="";
+    let score="";
     if(this.props.health > 50) {
       healthType = "success"
     } else {
@@ -18,6 +19,7 @@ export default class Profile extends React.Component {
     if(this.props.type === "ally"){
       name = "Defensor: " + this.props.name;
       health = <div><p>Vida restante: {this.props.health}</p><ProgressBar variant={healthType} now={this.props.health}/></div>
+      score = <div><p>Puntuación: {this.props.score}</p></div>
     } else {
       if (this.props.type === "enemy"){
         name= "Atacante: " + this.props.name;
@@ -38,6 +40,7 @@ export default class Profile extends React.Component {
           <p>
           Localización: {this.props.location}
           </p>
+          {score}
           {health}
           </Col>
         </Row>
