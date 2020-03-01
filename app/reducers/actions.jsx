@@ -74,3 +74,9 @@ export function buy(index){
 export function startGame(){
   return {type:'START'}
 }
+
+export function next(){
+  return {
+    type:'NEXT',
+  };
+}

@@ -11,6 +11,7 @@ export const INITIAL_STATE = {
     health:100,
     points:0,
     currentRound:0,
+    onHold:false,
     achievements:{
       "first":false,
       "second":false,

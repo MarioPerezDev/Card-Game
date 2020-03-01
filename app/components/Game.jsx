@@ -5,6 +5,7 @@ import {Row, Col} from 'react-bootstrap';
 import Card from './Card.jsx';
 import Shop from './Shop.jsx';
 import Profile from './Profile.jsx';
+import Feedback from './Feedback.jsx';
 
 
 //  Equivale al Quiz
@@ -35,6 +36,7 @@ export default class Game extends React.Component {
     let ownCards = "";
     let enemyCard = "";
     let currentPowerUp ="";
+    let holdArea = "";
 
 
     if(round){
@@ -53,42 +55,11 @@ export default class Game extends React.Component {
           )}
       }
       ));}
-
-    if (powerUp){
-      if(powerUp !== "none"){
-      currentPowerUp = (
-        <div className ="currentPowerUp">
-        <p>PowerUp activo:</p>
-        <img src={"assets/images/"+ powerUp + ".png"}></img>
-        </div>
-      )   
-      }   
-    }
-    return (
-      <div>
-      Ronda {currentRound + 1}
-        <Row className="enemyRow">
-          <Col className="avatarArea">
-            <Profile type="enemy" pic={round.enemyPic} name ={round.enemyName} location={round.enemyLocation}></Profile>
-          </Col>
-
-          <Col xs={7}>
-            <Row>
-              <Col sm={4}></Col>
-                {enemyCard}
-              <Col sm={4}></Col>
-            </Row>
-          </Col>
-          <Col xs={3} className="enemyDialog speech-bubble">
-            Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba
-            Esto es una prueba Esto es una pruebaEsto es una prueba  Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba
-            Esto es una prueba Esto es una pruebaEsto es una prueba Esto es una pruebaEsto es una pruebaEsto es una prueba vEsto es una pruebaEsto es una prueba Esto es una prueba
-          </Col>
-          </Row>
-
-          <Row className="allyRow">
+    if(!this.props.game.onHold){
+    holdArea = (
+      <Row className="allyRow">
             <Col className="avatarArea">
-              <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name} location={round.enemyLocation} health={this.props.game.health} score={this.props.game.points}></Profile>
+              <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.points} I18n={this.props.I18n}></Profile>
             </Col>
             <Col xs={7}>
               <Row>
@@ -105,7 +76,7 @@ export default class Game extends React.Component {
                     <p className="money">{this.props.game.money}</p>
                     </Col>
                     <Col>
-                    <Shop dispatch={this.props.dispatch} game={this.props.game}></Shop>
+                    <Shop dispatch={this.props.dispatch} game={this.props.game} I18n={this.props.I18n}></Shop>
                     <p>Descargar mejoras</p>
                     </Col> 
                   </Row>
@@ -123,8 +94,55 @@ export default class Game extends React.Component {
                 </Col>
               </Row>
             </Col>
-          </Row>
+       </Row>
+    );
+  }else{
+    holdArea = (
+      <Row className="allyRow">
+      <Col className="avatarArea">
+        <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.points} I18n={this.props.I18n}></Profile>
+      </Col>
+      <Feedback dispatch={this.props.dispatch}>
 
+      </Feedback>
+      </Row>
+    );
+  }
+    
+
+    
+    if (powerUp){
+      if(powerUp !== "none"){
+      currentPowerUp = (
+        <div className ="currentPowerUp">
+        <p>PowerUp activo:</p>
+        <img src={"assets/images/"+ powerUp + ".png"}></img>
+        </div>
+      )   
+      }   
+    }
+    return (
+      <div>
+      Ronda {currentRound + 1}
+        <Row className="enemyRow">
+          <Col className="avatarArea">
+            <Profile type="enemy" pic={round.enemyPic} name ={round.enemyName} I18n={this.props.I18n}></Profile>
+          </Col>
+
+          <Col xs={7}>
+            <Row>
+              <Col sm={4}></Col>
+                {enemyCard}
+              <Col sm={4}></Col>
+            </Row>
+          </Col>
+          <Col xs={3} className="enemyDialog speech-bubble">
+            Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba
+            Esto es una prueba Esto es una pruebaEsto es una prueba  Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba
+            Esto es una prueba Esto es una pruebaEsto es una prueba Esto es una pruebaEsto es una pruebaEsto es una prueba vEsto es una pruebaEsto es una prueba Esto es una prueba
+          </Col>
+          </Row>
+            {holdArea}   
       </div>
 
     );

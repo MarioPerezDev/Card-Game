@@ -28,17 +28,14 @@ export default function gameReducer(state = {}, action){
         scoreToAdd *= 2;
       }
       newState.points = newState.points + scoreToAdd;
-      console.log(scoreToAdd)
       if(action.payload.power === Math.max(...powers)){
         newState.money = newState.money + (action.payload.power - enemypower)*30
       }
     }
-    if(newState.powerUp === "delete" || "x2"){
+    if(newState.powerUp === "delete" || newState.powerUp === "x2"){
       newState.powerUp = "none";
     }
-    newState.currentRound += 1;
-
-    // newState.achievements.first = true; El logro se pone en color  
+    newState.onHold =true;  
     return newState;
   }
   case 'BUY':{
@@ -58,9 +55,16 @@ export default function gameReducer(state = {}, action){
         break;
       case 4:
         newState.money = newState.money - 100;
+        newState.points = newState.points/2;
         newState.currentRound++;
         break;
     }
+  return newState;
+}
+case 'NEXT':{
+  newState = JSON.parse(JSON.stringify(state));
+  newState.onHold = false;
+  newState.currentRound++;
   return newState;
 }
   case 'FINISH_APP':{

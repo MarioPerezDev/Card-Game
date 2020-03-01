@@ -17,12 +17,12 @@ export default class Profile extends React.Component {
       }
     }
     if(this.props.type === "ally"){
-      name = "Defensor: " + this.props.name;
-      health = <div><p>Vida restante: {this.props.health}</p><ProgressBar variant={healthType} now={this.props.health}/></div>
-      score = <div><p>Puntuación: {this.props.score}</p></div>
+      name = this.props.I18n.getTrans("i.defender") + ": " + this.props.name;
+      health = <div><p>{this.props.I18n.getTrans("i.healthIndicator") + ": " + this.props.health}</p><ProgressBar variant={healthType} now={this.props.health}/></div>
+      score = <div><p>{this.props.I18n.getTrans("i.scoreIndicator") + ": " + this.props.score}</p></div>
     } else {
       if (this.props.type === "enemy"){
-        name= "Atacante: " + this.props.name;
+        name= this.props.I18n.getTrans("i.attacker") + ": " + this.props.name;
       }
     }
     return (
@@ -38,7 +38,6 @@ export default class Profile extends React.Component {
             {name}
           </p>
           <p>
-          Localización: {this.props.location}
           </p>
           {score}
           {health}
