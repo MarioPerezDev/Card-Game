@@ -1,4 +1,4 @@
-import {gameSettings} from './../assets/gameSettings.js';
+import gameSettings from './../assets/gameSettings.js';
 
 export default function gameReducer(state = {}, action){
   let newState;
@@ -27,7 +27,7 @@ export default function gameReducer(state = {}, action){
       if(newState.powerUp === "x2"){
         scoreToAdd *= 2;
       }
-      newState.points = newState.points + scoreToAdd;
+      newState.score = newState.score + scoreToAdd;
       if(action.payload.power === Math.max(...powers)){
         newState.money = newState.money + (action.payload.power - enemypower)*30
       }
@@ -55,7 +55,7 @@ export default function gameReducer(state = {}, action){
         break;
       case 4:
         newState.money = newState.money - 100;
-        newState.points = newState.points/2;
+        newState.score = newState.score/2;
         newState.currentRound++;
         break;
     }
@@ -72,6 +72,7 @@ case 'NEXT':{
     newState.finished = true;
     return newState;
   }
+  
   default:
     return state;
 }

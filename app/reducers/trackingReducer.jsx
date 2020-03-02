@@ -1,6 +1,7 @@
 import * as Utils from '../vendors/Utils.js';
+import gameSettings from './../assets/gameSettings.js';
 
-function trackingReducer(state = {}, action){
+export default function trackingReducer(state = {}, action){
   let newState;
   switch (action.type){
   case 'ADD_OBJECTIVES':{
@@ -25,9 +26,9 @@ function trackingReducer(state = {}, action){
       objective.progress_measure = Math.max(0, Math.min(1, objective.progress_measure));
     }
 
-    let updateScore = ((typeof objective.score === "number") && (typeof action.accomplished_score === "number"));
+    let updateScore = (action.damage > 0);
     if(updateScore){
-      objective.accomplished_score = Math.max(0, Math.min(Math.max(0, Math.min(1, objective.score)), action.accomplished_score));
+      objective.accomplished_score = action.damage;
     }
 
     objective.accomplished = true;
@@ -40,7 +41,9 @@ function trackingReducer(state = {}, action){
     newState.progress_measure = 0;
     newState.score = 0;
     let objectivesIds = Object.keys(newState.objectives);
+    let maxScore = 0;
     for(let i = 0; i < objectivesIds.length; i++){
+      maxScore = maxScore + (Math.max(...gameSettings.rounds[i].ownCards.map((card) => card.power)) - gameSettings.rounds[i].enemyCard.power);
       if(newState.objectives[objectivesIds[i]].accomplished === true){
         if(typeof newState.objectives[objectivesIds[i]].progress_measure === "number"){
           newState.progress_measure += newState.objectives[objectivesIds[i]].progress_measure;
@@ -50,7 +53,7 @@ function trackingReducer(state = {}, action){
         }
       }
     }
-
+    newState.score = newState.score/maxScore;
     return newState;
   }
   case 'RESET_OBJECTIVES':{
@@ -79,5 +82,3 @@ function trackingReducer(state = {}, action){
     return state;
   }
 }
-
-export default trackingReducer;

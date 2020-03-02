@@ -1,4 +1,4 @@
-export const gameSettings = {
+const gameSettings = {
   "title":"game1",
   "rounds":[
     {
@@ -174,3 +174,4 @@ export const gameSettings = {
             ]},
   ],
 };
+export default gameSettings;

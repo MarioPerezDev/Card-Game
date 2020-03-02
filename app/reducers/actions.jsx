@@ -25,11 +25,12 @@ export function resetObjectives(){
   };
 }
 
-export function objectiveAccomplished(objectiveId, accomplishedScore = null){
+export function objectiveAccomplished(objectiveId, damage, powerUp){
   return {
     type:'OBJECTIVE_ACCOMPLISHED',
     objective_id:objectiveId,
-    accomplished_score:accomplishedScore,
+    damage,
+    powerUp,
   };
 }
 

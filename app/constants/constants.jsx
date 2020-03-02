@@ -6,6 +6,10 @@ export const INITIAL_STATE = {
     started:false,
   },
   game:{
+    progress_measure:0,
+    score:null,
+    objectives:{},
+    started:false,
     money:0,
     finished:false,
     health:100,

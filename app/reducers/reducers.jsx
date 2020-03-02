@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
-import trackingReducer from './trackingReducer';
+import trackingR from './trackingReducer';
 import scormReducer from './scormReducer';
 import userProfileReducer from './userProfileReducer';
 import waitForUserProfileReducer from './waitForUserProfileReducer';
 import gameReducer from './gameReducer';
 
 const GlobalState = combineReducers({
-  tracking:trackingReducer,
+  tracking:trackingR,
   scorm:scormReducer,
   user_profile:userProfileReducer,
   wait_for_user_profile:waitForUserProfileReducer,

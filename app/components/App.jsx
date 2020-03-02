@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {GLOBAL_CONFIG} from '../config/config.js';
 import * as I18n from '../vendors/I18n.js';
-import * as GAME from './../assets/gameSettings.js';
+import GAME from './../assets/gameSettings.js';
 
 import SCORM from './SCORM.jsx';
 import Header from './Header.jsx';
@@ -33,7 +33,7 @@ export class App extends React.Component {
         <Header user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n}/>
       );
       if(this.props.wait_for_user_profile !== true && GAME){
-        appContent = (<Game dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} game={this.props.game} configs={GAME.gameSettings} config={GLOBAL_CONFIG} I18n={I18n}/>);
+        appContent = (<Game dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} game={this.props.game} configs={GAME} config={GLOBAL_CONFIG} I18n={I18n}/>);
       };
     } else {
       appContent = (

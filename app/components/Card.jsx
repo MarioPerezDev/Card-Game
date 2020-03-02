@@ -10,9 +10,10 @@ export default class Card extends React.Component {
   render(){
     let objective = this.props.objective;
     let dispatchFunction;
+    let damage = this.props.power - this.props.enemypower;
     if (this.props.dispatchable){
       dispatchFunction = () => {
-        this.props.dispatch(objectiveAccomplished(objective.id, objective.score * 10)); 
+        this.props.dispatch(objectiveAccomplished(objective.id, damage, this.props.currentPowerUp)); 
         (this.props.currentRound + 1 < this.props.configs.rounds.length)? this.props.dispatch(playCard(this.props.power)) :this.props.dispatch(finishApp(true))
       }
     }else{
