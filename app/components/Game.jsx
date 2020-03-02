@@ -55,6 +55,17 @@ export default class Game extends React.Component {
           )}
       }
       ));}
+          
+    if (powerUp){
+      if(powerUp !== "none"){
+      currentPowerUp = (
+        <div className ="currentPowerUp">
+        <p>{this.props.I18n.getTrans("i.currentPowerUp") + ": "}</p>
+        <img src={"assets/images/"+ powerUp + ".png"}></img>
+        </div>
+      )   
+      }   
+    }
     if(!this.props.game.onHold){
     holdArea = (
       <Row className="allyRow">
@@ -72,12 +83,12 @@ export default class Game extends React.Component {
                   <Row>               
                     <Col className="moneyText">
                     {currentPowerUp}
-                    <p>Bits disponibles:</p>
+                    <p>{this.props.I18n.getTrans("i.bitsInfo") + ": "}</p>
                     <p className="money">{this.props.game.money}</p>
                     </Col>
                     <Col>
                     <Shop dispatch={this.props.dispatch} game={this.props.game} I18n={this.props.I18n}></Shop>
-                    <p>Descargar mejoras</p>
+                    <p>{this.props.I18n.getTrans("i.downloadButton")}</p>
                     </Col> 
                   </Row>
                 </Col>
@@ -108,19 +119,6 @@ export default class Game extends React.Component {
       </Row>
     );
   }
-    
-
-    
-    if (powerUp){
-      if(powerUp !== "none"){
-      currentPowerUp = (
-        <div className ="currentPowerUp">
-        <p>PowerUp activo:</p>
-        <img src={"assets/images/"+ powerUp + ".png"}></img>
-        </div>
-      )   
-      }   
-    }
     return (
       <div>
       Ronda {currentRound + 1}

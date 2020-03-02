@@ -25,18 +25,19 @@ export default class Shop extends React.Component {
 
 	render() {
 		//Translation variables
-		let shopTitle = this.props.I18n.getTrans("i.shopTitle")
-		let shopHelp = this.props.I18n.getTrans("i.shopHelp")
-		let shieldDescription = this.props.I18n.getTrans("i.shieldDescription")
-		let deleteDescription = this.props.I18n.getTrans("i.deleteDescription")
-		let x2Description = this.props.I18n.getTrans("i.x2Description")
-		let skipDescription = this.props.I18n.getTrans("i.skipDescription")
+		let shopTitle = this.props.I18n.getTrans("i.shopTitle");
+		let shopHelp = this.props.I18n.getTrans("i.shopHelp");
+		let shieldDescription = this.props.I18n.getTrans("i.shieldDescription");
+		let deleteDescription = this.props.I18n.getTrans("i.deleteDescription");
+		let x2Description = this.props.I18n.getTrans("i.x2Description");
+		let skipDescription = this.props.I18n.getTrans("i.skipDescription");
+		let warningMsg = this.props.I18n.getTrans("i.shopWarning");
 		//Checks if there is any powerUp already active.
 		let powerUp = this.props.game.powerUp;
 		let activePowerUp = (powerUp !== "none");
 		let warning=""
 		if (activePowerUp){
-			warning = (<Alert variant="danger">Ya hay activado un power up, si compras otro, se susituirá.</Alert>)
+			warning = (<Alert variant="danger">{warningMsg}</Alert>)
 		}
 		return (
 			<>

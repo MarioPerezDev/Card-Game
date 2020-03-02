@@ -17,18 +17,9 @@ export default class Card extends React.Component {
       }
     }else{
       dispatchFunction = () =>{
-        alert("No puedes utilizar esa carta.")
+        alert(this.props.I18n.getTrans("i.disabledCard"))
       };
     }
-    
-    
-    
-    //let cardClassName = "card"; (De momento se usa el que te llega)
-    /*
-    if (algo que se active al hacerle click){
-    cardClassName += " selected"
-  }
-    */
     return (
       <div className={this.props.cardClassName+ " card"} onClick={dispatchFunction}>
         <Container>

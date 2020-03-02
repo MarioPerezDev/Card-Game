@@ -17,6 +17,10 @@ export let LOCALES = {
     "i.reset_quiz":"Reset quiz",
     "i.score":"Score",
     "i.title":"RESCORM Boilerplate",
+    "i.downloadButton": "Download power up",
+    "i.bitsInfo": "Bits obtained",
+    "i.currentPowerUp": "Current PowerUp",
+    "i.disabledCard": "You can't use this card",
     //PowerUp shop translations
     "i.shopTitle":"PowerUp Market",
     "i.shopHelp":"You can purchase any power up using the indicated bits",
@@ -28,6 +32,7 @@ export let LOCALES = {
     "i.delete":"Delete card",
     "i.x2":"Double Points",
     "i.skip":"Skip round",
+    "i.shopWarning": "You have already activated a power up, purchasing another one will replace it.",
     //Profile and avatar area translations
     "i.attacker": "Attacker",
     "i.defender": "Defender",
@@ -51,6 +56,10 @@ export let LOCALES = {
     "i.reset_question":"Resetear pregunta",
     "i.reset_quiz":"Resetear cuestionario",
     "i.score":"Puntuación",
+    "i.downloadButton": "Descargar mejoras",
+    "i.bitsInfo": "Bits disponibles",
+    "i.currentPowerUp": "Power Up activo",
+    "i.disabledCard": "No puedes usar esta carta",
     //Traducciones de la tienda de powerUps
     "i.shopTitle": "Tienda de poderes",
     "i.shopHelp": "Puedes comprar un power up usando los bits indicados",
@@ -62,6 +71,7 @@ export let LOCALES = {
     "i.delete": "Eliminar carta",
     "i.x2": "Puntuar el doble",
     "i.skip": "Saltar ronda",
+    "i.shopWarning": "Ya tienes activado un power up. Comprar otro sustituirá al ya activado.",
     //Traducciones de la zona del avatar y datos de usuario
     "i,attacker": "Atacante",
     "i.defender": "Defensor",
