@@ -51,7 +51,7 @@ export default class Game extends React.Component {
         return( <Col sm={4} key={i}><Card cardClassName={"allyCard deleted"} key={i} tracking={this.props.tracking} dispatchable={false} number={card.number} name={card.name} power={card.power}  image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
         )}
         else{
-          return (<Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} dispatchable={true} number={card.number} name={card.name} power={card.power} image={card.image} enemypower={round.enemyCard.power} currentPowerUp={this.props.game.powerUp} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+          return (<Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} dispatchable={true} activePowerUp={this.props.game.powerUp} number={card.number} name={card.name} power={card.power} image={card.image} enemypower={round.enemyCard.power} currentPowerUp={this.props.game.powerUp} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
           )}
       }
       ));}
@@ -70,7 +70,7 @@ export default class Game extends React.Component {
     holdArea = (
       <Row className="allyRow">
             <Col className="avatarArea">
-              <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.points} I18n={this.props.I18n}></Profile>
+              <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.score} maxScore={this.props.game.maxScore} I18n={this.props.I18n}></Profile>
             </Col>
             <Col xs={7}>
               <Row>
@@ -111,7 +111,7 @@ export default class Game extends React.Component {
     holdArea = (
       <Row className="allyRow">
       <Col className="avatarArea">
-        <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.points} I18n={this.props.I18n}></Profile>
+        <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.score} maxScore={this.props.game.maxScore} I18n={this.props.I18n}></Profile>
       </Col>
       <Feedback dispatch={this.props.dispatch}>
 

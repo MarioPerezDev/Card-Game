@@ -11,6 +11,7 @@ export default function gameReducer(state = {}, action){
     for (let i=0; i < currentRound.ownCards.length;i++){
       powers.push(currentRound.ownCards[i].power)
     }
+    let maxPower= Math.max(...powers);
     if (enemypower > action.payload.power){
       let damageReceived = (enemypower - action.payload.power)*25;
       if(newState.powerUp === "shield"){
@@ -28,10 +29,12 @@ export default function gameReducer(state = {}, action){
         scoreToAdd *= 2;
       }
       newState.score = newState.score + scoreToAdd;
-      if(action.payload.power === Math.max(...powers)){
+      if(action.payload.power === maxPower){
         newState.money = newState.money + (action.payload.power - enemypower)*30
       }
     }
+
+    newState.maxScore += (maxPower-enemypower)*100;
     if(newState.powerUp === "delete" || newState.powerUp === "x2"){
       newState.powerUp = "none";
     }
@@ -56,7 +59,7 @@ export default function gameReducer(state = {}, action){
       case 4:
         newState.money = newState.money - 100;
         newState.score = newState.score/2;
-        newState.currentRound++;
+        (newState.currentRound === gameSettings.rounds.length-1) ? newState.finished=true : newState.currentRound++;
         break;
     }
   return newState;

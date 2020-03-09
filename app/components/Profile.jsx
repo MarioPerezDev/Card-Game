@@ -19,7 +19,7 @@ export default class Profile extends React.Component {
     if(this.props.type === "ally"){
       name = this.props.I18n.getTrans("i.defender") + ": " + this.props.name;
       health = <div><p>{this.props.I18n.getTrans("i.healthIndicator") + ": " + this.props.health}</p><ProgressBar variant={healthType} now={this.props.health}/></div>
-      score = <div><p>{this.props.I18n.getTrans("i.scoreIndicator") + ": " + this.props.score}</p></div>
+      score = <div><p>{this.props.I18n.getTrans("i.scoreIndicator") + ": " + this.props.score +"/"+this.props.maxScore}</p></div>
     } else {
       if (this.props.type === "enemy"){
         name= this.props.I18n.getTrans("i.attacker") + ": " + this.props.name;
