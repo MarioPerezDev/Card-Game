@@ -14,7 +14,7 @@ export default class Card extends React.Component {
     if (this.props.dispatchable){
       dispatchFunction = () => {
         (this.props.activePowerUp==="x2") ? this.props.dispatch(objectiveAccomplished(objective.id, damage*2, this.props.currentPowerUp)) : this.props.dispatch(objectiveAccomplished(objective.id, damage, this.props.currentPowerUp)); 
-        (this.props.currentRound + 1 < this.props.configs.rounds.length)? this.props.dispatch(playCard(this.props.power)) :this.props.dispatch(finishApp(true))
+        (this.props.currentRound + 1 < this.props.configs.rounds.length)? this.props.dispatch(playCard(this.props.power, this.props.number)) :this.props.dispatch(finishApp(true))
       }
     }else{
       dispatchFunction = () =>{

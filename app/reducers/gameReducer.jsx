@@ -38,7 +38,9 @@ export default function gameReducer(state = {}, action){
     if(newState.powerUp === "delete" || newState.powerUp === "x2"){
       newState.powerUp = "none";
     }
-    newState.onHold =true;  
+    newState.onHold =true;
+    newState.feedback.rounds[newState.currentRound]={"chosen": action.payload.index}
+    console.log(newState.feedback)  
     return newState;
   }
   case 'BUY':{
@@ -59,7 +61,8 @@ export default function gameReducer(state = {}, action){
       case 4:
         newState.money = newState.money - 100;
         newState.score = newState.score/2;
-        (newState.currentRound === gameSettings.rounds.length-1) ? newState.finished=true : newState.currentRound++;
+        newState.powerUp = "skip";
+        newState.onHold = true;        
         break;
     }
   return newState;
@@ -67,7 +70,8 @@ export default function gameReducer(state = {}, action){
 case 'NEXT':{
   newState = JSON.parse(JSON.stringify(state));
   newState.onHold = false;
-  newState.currentRound++;
+  (newState.currentRound === gameSettings.rounds.length-1) ? newState.finished=true : newState.currentRound++;
+  if(!newState.powerUp === "shield") newState.powerUp = "none";
   return newState;
 }
   case 'FINISH_APP':{

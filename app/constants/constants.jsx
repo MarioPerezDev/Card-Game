@@ -16,6 +16,9 @@ export const INITIAL_STATE = {
     maxScore:0,
     currentRound:0,
     onHold:false,
+    feedback:{
+      rounds:[],
+    },
     achievements:{
       "first":false,
       "second":false,
