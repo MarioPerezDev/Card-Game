@@ -11,6 +11,13 @@ export default class Card extends React.Component {
     let objective = this.props.objective;
     let dispatchFunction;
     let damage = this.props.power - this.props.enemypower;
+    let icon = "";
+    if(this.props.cardClassName === "allyCard"){
+      icon = "shield";
+    }
+    if(this.props.cardClassName === "enemyCard"){
+      icon = "sword";
+    }
     if (this.props.dispatchable){
       dispatchFunction = () => {
         (this.props.activePowerUp==="x2") ? this.props.dispatch(objectiveAccomplished(objective.id, damage*2, this.props.currentPowerUp)) : this.props.dispatch(objectiveAccomplished(objective.id, damage, this.props.currentPowerUp)); 
@@ -31,8 +38,8 @@ export default class Card extends React.Component {
           <Col xs={8} className="card-name">
             {this.props.name}
           </Col>
-          <Col xs={2} className="card-power">
-            {this.props.power}
+          <Col xs={2}  className="powerIcon">
+          <img src={"assets/images/" + icon + ".png"}></img>
           </Col>
         </Row>
         <Row className="card-image">

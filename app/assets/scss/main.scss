@@ -36,35 +36,23 @@ div.header_wrapper img {
   text-align: center;
   border: 4px groove #18608F!important;
   border-radius: 12px!important;
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
+  -moz-box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
+  box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
+  }
+.allyCard:hover{
+  transform: scale(1.02); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .allyCard{
-  background-color: #5BD999!important;
+  background-color: rgb(152, 221, 103)!important;
 }
 
 .enemyCard{
   background-color: #ff6961!important;
 }
-
-.card p{
-  text-align: justify;
-  margin:10px;
-  color: white;
-}
-
-
-.card img{
-  width:100%;
-  max-height:125px;
-  border-radius: 3px;
-  border: 1px groove #18608F;
-  margin-top:10px;
-  margin-bottom:10px;
-
-}
-
 .allyCard .card-power-text{
-  background-color: #54ba86;
+  background-color: #68BB59;
   border-top: 2px groove #18608F;
   padding-top:10px;
   padding-bottom:10px;
@@ -82,12 +70,36 @@ div.header_wrapper img {
   border-bottom-right-radius:12px;
   text-align: justify;
 }
+.enemyDialog{
+  margin-top: 10px !important;
+}
+.card p{
+  text-align: justify;
+  margin:10px;
+  color: white;
+}
+
+
+.card-image img{
+  width:100%;
+  max-height:125px;
+  border-radius: 3px;
+  border: 1px groove #18608F;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+
 
 .card-number{
 font-size: 30px;
+padding-left: 0px !important;
+padding-right: 0px !important;
 }
 .card-name{
-padding-top:5px;
+padding-top: 5px;
+padding-left: 0px !important;
+padding-right: 0px !important;
 font-size: 20px;
 border-radius: 3px;
 border: 1px groove #18608F;
@@ -96,41 +108,56 @@ border: 1px groove #18608F;
 font-size: 30px;
 }
 
-.allyRow{
-  padding:10px;
-  background-color: #5BD999;
-  min-height:415px;
-}
 .enemyRow{
-  min-height:415px;
+  box-shadow: 0px -40px 35px black inset;
   padding:10px;
   background-color: #ff6961;
+  background-image: url("../images/MatrixRed.jpg");
 }
+
+.allyRow{
+  box-shadow: 0px 40px 35px black inset;
+  padding:10px;
+  background-color:#77DD77;
+  background-image: url("https://image.winudf.com/v2/image/Y29tLlBSSVNTSS5XYWxscGFwZXIuYmFja2dyb3VuZC5CYWNrZ3JvdW5kR3JlZW5XYWxscGFwZXJfc2NyZWVuXzBfMTUyODIwNDE4OF8wNzA/screen-0.jpg?fakeurl=1&type=.jpg");
+
+}
+
 
 .enemyPic{
   width:70%;
   top:50%;
+  margin-bottom: 5px;
 }
 
-.avatarArea{
-  background-color: #003366;
-  margin-left: 15px;
-  padding:10px;
-  color: white;
+
+.profile{
+  background-color: black;
+  width: 100%;
+  margin: 10px;
+  padding: 15px;
   border-radius: 5px;
   text-align: center;
   border: 1px groove white;
-  margin-top: auto;
-  margin-bottom: auto;
   font-size: 1.1em;
+  -webkit-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
+}
+.avatarArea{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatarText{
   background-color: #87ceeb;
+  color: white;
   text-align: left;
   margin-top: 5px;
   height: 100%;
   padding: 8px;
+  margin: 0px !important;
 }
 
 .avatarText p{
@@ -139,6 +166,11 @@ font-size: 30px;
 
 .downloadArea{
   margin: 10px;
+  margin-top: 20px;
+  background-color:  #98ddfc;
+  padding: 15px;
+  border: 3px groove #18608F;
+  border-radius: .4em;
 }
 .downloadArea img{
   height: 75%;
@@ -167,7 +199,11 @@ font-size: 30px;
   padding: 10px;
 }
 .grey{
-  filter: grayscale(100%);
+  -webkit-filter: drop-shadow(1px 1px 0 black)
+  drop-shadow(-1px -1px 0 black);
+  filter: drop-shadow(2px 2px 0 black) grayscale(100%)
+  drop-shadow(-1px -1px 0 black);
+
 }
 
 .grey_opacity{
@@ -189,7 +225,6 @@ font-size: 30px;
   border: 1px groove white;
   border-radius: .4em;
   color: white;
-  height: 90%;
   padding: 10px;
   margin-top: auto;
   margin-bottom: auto;
@@ -250,4 +285,91 @@ font-size: 30px;
 
 .feedback p{
   color: white;
+}
+
+.powerIcon{
+  margin-top: auto;  
+  margin-bottom: auto;
+}
+.powerIcon img{
+  width:100%;
+}
+
+@media only screen and (max-width: 1600px) {
+  .card-name{
+    font-size: 16px;
+  }
+  .allyCard .card-power-text{
+    font-size: 0.9em;
+  }
+  
+  .enemyCard .card-power-text{
+    font-size: 0.9em;
+  }
+  .speech-bubble {
+    font-size: 0.9em;
+  }
+  .avatarText{
+    font-size: 0.7em;
+    padding:2px;
+  }
+  .downloadArea img{
+    height: 60%;
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .card-name{
+    font-size: 15px;
+  }
+  .profile{
+    max-width: 350px;
+  }
+  .card {
+    margin-top: 10px;
+  }
+  .ribbonArea img{
+    width: 50%;
+  }
+  
+  .downloadArea{
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-top: 1px solid #18608F;
+  }
+  .allyCard .card-power-text{
+    font-size: 1em;
+  }
+  
+  .enemyCard .card-power-text{
+    font-size: 1em;
+  }
+  .speech-bubble {
+    font-size: 1em; 
+  }
+  .avatarText{
+    font-size: 1em;
+    padding:8px;
+  }
+  .downloadArea img{
+    height: 80%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .speech-bubble {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card p{
+    font-size: 0.9em;
+  }
+  .ribbonArea img{
+    width: 100%;
+  }
 }

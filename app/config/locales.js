@@ -24,8 +24,8 @@ export let LOCALES = {
     //PowerUp shop translations
     "i.shopTitle":"PowerUp Market",
     "i.shopHelp":"You can purchase any power up using the indicated bits",
-    "i.shieldDescription":"This shield makes you receive half damage next time you are harm",
-    "i.deleteDescription":"This powerUp will remove one card so it is harder to fail. The removed card will always be the middle one.",
+    "i.shieldDescription":"This shield makes you receive half damage next time you are harm.",
+    "i.deleteDescription":"This powerUp will remove one card so it is harder to fail. The removed card will always be the middle powered one.",
     "i.x2Description":"Using this powerUp will make you score double. If you dont score this round, it will be useless.",
     "i.skipDescription":"You can skip this round. Your score will be reduced to half, so think before using it.",
     "i.shield":"Shield",
@@ -36,6 +36,7 @@ export let LOCALES = {
     //Profile and avatar area translations
     "i.attacker": "Attacker",
     "i.defender": "Defender",
+    "i.location": "Unknown location",
     "i.healthIndicator": "Remaining health",
     "i.scoreIndicator": "Score", 
   },
@@ -75,6 +76,7 @@ export let LOCALES = {
     //Traducciones de la zona del avatar y datos de usuario
     "i,attacker": "Atacante",
     "i.defender": "Defensor",
+    "i.location": "Ubicación desconocida",
     "i.healthIndicator": "Vida restante",
     "i.scoreIndicator": "Puntuación", 
   },

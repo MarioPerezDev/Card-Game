@@ -26,6 +26,7 @@ export default class FinishScreen extends React.Component {
     return (
       <div className="finish_screen">
         <h1 id="finish_title">{finishTitleText}</h1>
+        {this.props.nombrequemesalgadelapolla}
       </div>
     );
   }

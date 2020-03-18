@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Container,ProgressBar} from 'react-bootstrap';
+import {Row, Container, Col,ProgressBar} from 'react-bootstrap';
 
 export default class Profile extends React.Component {
   render(){
@@ -7,6 +7,7 @@ export default class Profile extends React.Component {
     let name = "";
     let health ="";
     let score="";
+    let location="";
     if(this.props.health > 50) {
       healthType = "success"
     } else {
@@ -23,10 +24,11 @@ export default class Profile extends React.Component {
     } else {
       if (this.props.type === "enemy"){
         name= this.props.I18n.getTrans("i.attacker") + ": " + this.props.name;
+        location= this.props.I18n.getTrans("i.location");
       }
     }
     return (
-        <Container>
+      <Container fluid="lg" className="profile">
         <Row className="text-center">
           <Col>
           <img className="enemyPic" src={this.props.pic} alt="cardimage"/>
@@ -38,6 +40,7 @@ export default class Profile extends React.Component {
             {name}
           </p>
           <p>
+          {location}
           </p>
           {score}
           {health}

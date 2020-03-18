@@ -41,21 +41,22 @@ export default class Game extends React.Component {
 
     if(round){
       let middleIndex = "";
-      enemyCard = <Col sm={4}><Card cardClassName={"enemyCard"} number={round.enemyCard.number} dispatchable={false} name={round.enemyCard.name} power={round.enemyCard.power} image={round.enemyCard.image} powerinfo={round.enemyCard.powerinfo}/></Col>
+      enemyCard = <Col className="d-flex justify-content-center" xs={12} xl={4}><Card cardClassName={"enemyCard"} number={round.enemyCard.number} dispatchable={false} name={round.enemyCard.name} power={round.enemyCard.power} image={round.enemyCard.image} powerinfo={round.enemyCard.powerinfo}/></Col>
       if(powerUp ==="delete"){
       middleIndex = this.getMiddle(round.ownCards);
       }
       ownCards = (round.ownCards.map((card, i) =>
       {
         if(i === middleIndex){
-        return( <Col sm={4} key={i}><Card cardClassName={"allyCard deleted"} key={i} tracking={this.props.tracking} dispatchable={false} number={card.number} name={card.name} power={card.power}  image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+        return( <Col className="d-flex justify-content-center" xs={12} md={4} key={i}><Card cardClassName={"allyCard deleted"} key={i} tracking={this.props.tracking} dispatchable={false} number={card.number} name={card.name} power={card.power}  image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
         )}
         else{
-          return (<Col sm={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} dispatchable={true} activePowerUp={this.props.game.powerUp} number={i+1} name={card.name} power={card.power} image={card.image} enemypower={round.enemyCard.power} currentPowerUp={this.props.game.powerUp} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+          return (<Col className="d-flex justify-content-center" xs={12} md={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} dispatchable={true} activePowerUp={this.props.game.powerUp} number={i+1} name={card.name} power={card.power} image={card.image} enemypower={round.enemyCard.power} currentPowerUp={this.props.game.powerUp} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
           )}
       }
       ));}
-          
+          //<Profile type="enemy" pic={round.enemyPic} name ={round.enemyName} I18n={this.props.I18n}></Profile>
+
     if (powerUp){
       if(powerUp !== "none"){
       currentPowerUp = (
@@ -68,32 +69,36 @@ export default class Game extends React.Component {
     }
     if(!this.props.game.onHold){
     holdArea = (
-      <Row className="allyRow">
-            <Col className="avatarArea">
+      <Row className="allyRow d-flex justify-content-center">
+            <Col xs={12} xl={2} className="avatarArea">
               <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.score} maxScore={this.props.game.maxScore} I18n={this.props.I18n}></Profile>
             </Col>
-            <Col xs={7}>
-              <Row>
+
+
+            <Col xs={12} xl={7}>
+              <Row className="d-flex justify-content-center">
                   {ownCards}
               </Row>  
             </Col>
-            <Col xs={3} className="menuArea">
+
+
+            <Col xs={12} xl={3} className="menuArea">
               <Row>
                 <Col className="downloadArea text-center">
                   <Row>               
-                    <Col className="moneyText">
+                    <Col xs={12} md={6} className="moneyText">
                     {currentPowerUp}
                     <p>{this.props.I18n.getTrans("i.bitsInfo") + ": "}</p>
                     <p className="money">{this.props.game.money}</p>
                     </Col>
-                    <Col>
+                    <Col xs={12} md={6}>
                     <Shop dispatch={this.props.dispatch} game={this.props.game} I18n={this.props.I18n}></Shop>
-                    <p>{this.props.I18n.getTrans("i.downloadButton")}</p>
+                    <p className="text-center">{this.props.I18n.getTrans("i.downloadButton")}</p>
                     </Col> 
                   </Row>
                 </Col>
               </Row>
-              <Row className="ribbonArea">
+              <Row className="ribbonArea d-flex justify-content-center text-center">
                 <Col>
                 <img className={this.props.game.achievements.first ? "" : "grey"} src="assets/images/medal.png"></img>
                 </Col>
@@ -109,12 +114,11 @@ export default class Game extends React.Component {
     );
   }else{
     holdArea = (
-      <Row className="allyRow">
-      <Col className="avatarArea">
-        <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.score} maxScore={this.props.game.maxScore} I18n={this.props.I18n}></Profile>
+      <Row className="allyRow d-flex justify-content-center">
+      <Col>
+        <Profile className="avatarArea" type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.score} maxScore={this.props.game.maxScore} I18n={this.props.I18n}></Profile>
       </Col>
       <Feedback dispatch={this.props.dispatch} game={this.props.game} feedback={round.feedback} objective={objective}>
-
       </Feedback>
       </Row>
     );
@@ -122,25 +126,26 @@ export default class Game extends React.Component {
     return (
       <div>
       Ronda {currentRound + 1}
-        <Row className="enemyRow">
-          <Col className="avatarArea">
+        <Row className="enemyRow d-flex justify-content-center text-center">
+          <Col xs={12} lg={4} xl={2}  className="avatarArea">
             <Profile type="enemy" pic={round.enemyPic} name ={round.enemyName} I18n={this.props.I18n}></Profile>
           </Col>
 
-          <Col xs={7}>
-            <Row>
-              <Col sm={4}></Col>
+          <Col xs={12} lg={4} xl={7}>
+            <Row className="d-flex justify-content-center">
                 {enemyCard}
-              <Col sm={4}></Col>
             </Row>
           </Col>
-          <Col xs={3} className="enemyDialog speech-bubble">
+
+          <Col xs={12} lg={4} xl={3}>
+            <div className="enemyDialog speech-bubble">
             Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba
             Esto es una prueba Esto es una pruebaEsto es una prueba  Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba
             Esto es una prueba Esto es una pruebaEsto es una prueba Esto es una pruebaEsto es una pruebaEsto es una prueba vEsto es una pruebaEsto es una prueba Esto es una prueba
+            </div>
           </Col>
-          </Row>
-            {holdArea}   
+        </Row>
+          {holdArea}   
       </div>
 
     );
