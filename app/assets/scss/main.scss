@@ -1,6 +1,9 @@
 body {
   background-color: white;
 }
+p{
+  font-family: 'Exo 2', sans-serif;
+}
 
 div.header_wrapper img {
   width: 71px;
@@ -31,8 +34,9 @@ div.header_wrapper img {
 }
 
 .card{
-  max-width: 300px;
+  max-width: 315px;
   max-height: 600px;
+  margin-top: 20px;
   text-align: center;
   border: 4px groove #18608F!important;
   border-radius: 12px!important;
@@ -111,11 +115,12 @@ font-size: 30px;
 .enemyRow{
   box-shadow: 0px -40px 35px black inset;
   padding:10px;
-  background-color: #ff6961;
   background-image: url("../images/MatrixRed.jpg");
+  min-height: 495px;
 }
 
 .allyRow{
+  min-height: 495px;
   box-shadow: 0px 40px 35px black inset;
   padding:10px;
   background-color:#77DD77;
@@ -138,8 +143,9 @@ font-size: 30px;
   padding: 15px;
   border-radius: 5px;
   text-align: center;
-  border: 1px groove white;
-  font-size: 1.1em;
+  border: 2px groove white;
+  font-size: 1em;
+  font-family: 'Raleway', sans-serif;
   -webkit-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
@@ -149,10 +155,16 @@ font-size: 30px;
   justify-content: center;
   align-items: center;
 }
+.avatarArea img{
+  border: 1px groove white;
+  border-radius: 3px;
+}
 
 .avatarText{
   background-color: #87ceeb;
   color: white;
+  border: 1px groove white;
+  border-radius: 3px;
   text-align: left;
   margin-top: 5px;
   height: 100%;
@@ -169,17 +181,30 @@ font-size: 30px;
   margin-top: 20px;
   background-color:  #98ddfc;
   padding: 15px;
-  border: 3px groove #18608F;
+  border: 2px groove white;
   border-radius: .4em;
+  -webkit-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.75);
 }
 .downloadArea img{
   height: 75%;
+}
+.downloadIcon:hover{
+  transform: scale(1.04);
+}
+.downloadButtonText{
+  font-size: 1.4em;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .moneyText{
   margin-top: auto;
   margin-bottom: auto;
   font-size: 1.4em;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .moneyText p{
@@ -221,13 +246,16 @@ font-size: 30px;
 
 .speech-bubble {
 	position: relative;
-  background: #bb244a;
-  border: 1px groove white;
+  background: white;
+  border: 4px groove black;
   border-radius: .4em;
-  color: white;
+  color: black;
   padding: 10px;
   margin-top: auto;
   margin-bottom: auto;
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
+  -moz-box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
+  box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
 }
 
 .speech-bubble:after {
@@ -307,7 +335,7 @@ font-size: 30px;
     font-size: 0.9em;
   }
   .speech-bubble {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
   .avatarText{
     font-size: 0.7em;
@@ -355,6 +383,9 @@ font-size: 30px;
   }
   .downloadArea img{
     height: 80%;
+  }
+  .card p{
+    font-size: 1em;
   }
 }
 

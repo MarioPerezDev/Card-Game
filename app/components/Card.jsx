@@ -12,10 +12,10 @@ export default class Card extends React.Component {
     let dispatchFunction;
     let damage = this.props.power - this.props.enemypower;
     let icon = "";
-    if(this.props.cardClassName === "allyCard"){
+    if(this.props.cardClassName.includes("allyCard")){
       icon = "shield";
     }
-    if(this.props.cardClassName === "enemyCard"){
+    if(this.props.cardClassName.includes("enemyCard")){
       icon = "sword";
     }
     if (this.props.dispatchable){
@@ -49,7 +49,7 @@ export default class Card extends React.Component {
         </Row>
         <Row className="card-power-text">
           <Col>
-            {this.props.powerinfo}
+          <p>{this.props.powerinfo}</p>
           </Col>
         </Row>
         </Container>

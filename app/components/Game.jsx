@@ -48,7 +48,7 @@ export default class Game extends React.Component {
       ownCards = (round.ownCards.map((card, i) =>
       {
         if(i === middleIndex){
-        return( <Col className="d-flex justify-content-center" xs={12} md={4} key={i}><Card cardClassName={"allyCard deleted"} key={i} tracking={this.props.tracking} dispatchable={false} number={card.number} name={card.name} power={card.power}  image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
+        return( <Col className="d-flex justify-content-center" xs={12} md={4} key={i}><Card cardClassName={"allyCard deleted"} key={i} tracking={this.props.tracking} dispatchable={false} number={i+1} name={card.name} power={card.power}  image={card.image} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
         )}
         else{
           return (<Col className="d-flex justify-content-center" xs={12} md={4} key={i}><Card cardClassName={"allyCard"} key={i} tracking={this.props.tracking} dispatchable={true} activePowerUp={this.props.game.powerUp} number={i+1} name={card.name} power={card.power} image={card.image} enemypower={round.enemyCard.power} currentPowerUp={this.props.game.powerUp} powerinfo={card.powerinfo} objective={objective} dispatch = {this.props.dispatch} currentRound={currentRound} configs= {this.props.configs}/></Col>
@@ -91,9 +91,9 @@ export default class Game extends React.Component {
                     <p>{this.props.I18n.getTrans("i.bitsInfo") + ": "}</p>
                     <p className="money">{this.props.game.money}</p>
                     </Col>
-                    <Col xs={12} md={6}>
+                    <Col className="downloadIcon" xs={12} md={6}>
                     <Shop dispatch={this.props.dispatch} game={this.props.game} I18n={this.props.I18n}></Shop>
-                    <p className="text-center">{this.props.I18n.getTrans("i.downloadButton")}</p>
+                    <p className="text-center downloadButtonText">{this.props.I18n.getTrans("i.downloadButton")}</p>
                     </Col> 
                   </Row>
                 </Col>
@@ -115,9 +115,9 @@ export default class Game extends React.Component {
   }else{
     holdArea = (
       <Row className="allyRow d-flex justify-content-center">
-      <Col>
-        <Profile className="avatarArea" type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.score} maxScore={this.props.game.maxScore} I18n={this.props.I18n}></Profile>
-      </Col>
+            <Col xs={12} xl={2} className="avatarArea">
+              <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.score} maxScore={this.props.game.maxScore} I18n={this.props.I18n}></Profile>
+            </Col>
       <Feedback dispatch={this.props.dispatch} game={this.props.game} feedback={round.feedback} objective={objective}>
       </Feedback>
       </Row>
@@ -139,9 +139,11 @@ export default class Game extends React.Component {
 
           <Col xs={12} lg={4} xl={3}>
             <div className="enemyDialog speech-bubble">
+              <p>
             Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba
             Esto es una prueba Esto es una pruebaEsto es una prueba  Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba Esto es una prueba
             Esto es una prueba Esto es una pruebaEsto es una prueba Esto es una pruebaEsto es una pruebaEsto es una prueba vEsto es una pruebaEsto es una prueba Esto es una prueba
+            </p>
             </div>
           </Col>
         </Row>
