@@ -135,6 +135,14 @@ font-size: 30px;
   margin-bottom: 5px;
 }
 
+.chosen{
+
+}
+
+.notChosen{
+  filter: drop-shadow(2px 2px 0 black) grayscale(100%)
+}
+
 
 .profile{
   background-color: black;
@@ -228,7 +236,6 @@ font-size: 30px;
   drop-shadow(-1px -1px 0 black);
   filter: drop-shadow(2px 2px 0 black) grayscale(100%)
   drop-shadow(-1px -1px 0 black);
-
 }
 
 .grey_opacity{
@@ -242,6 +249,22 @@ font-size: 30px;
 }
 .menuArea{
   padding: 0px;
+}
+
+.feedback{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: #87ceeb;
+  padding: 20px;
+  color: white;
+  border: 4px groove black;
+  border-radius: .4em;
+  -webkit-box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
+  -moz-box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
+  box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.84);
 }
 
 .speech-bubble {

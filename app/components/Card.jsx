@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col, Container} from 'react-bootstrap';
-import {playCard, finishApp, objectiveAccomplished} from '../reducers/actions';
+import {playCard, objectiveAccomplished} from '../reducers/actions';
 
 
 export default class Card extends React.Component {
@@ -21,7 +21,7 @@ export default class Card extends React.Component {
     if (this.props.dispatchable){
       dispatchFunction = () => {
         (this.props.activePowerUp==="x2") ? this.props.dispatch(objectiveAccomplished(objective.id, damage*2, this.props.currentPowerUp)) : this.props.dispatch(objectiveAccomplished(objective.id, damage, this.props.currentPowerUp)); 
-        (this.props.currentRound + 1 < this.props.configs.rounds.length)? this.props.dispatch(playCard(this.props.power, this.props.number)) :this.props.dispatch(finishApp(true))
+        this.props.dispatch(playCard(this.props.power, this.props.number));
       }
     }else{
       dispatchFunction = () =>{

@@ -1,7 +1,8 @@
 import React from 'react';
 import * as Utils from '../vendors/Utils.js';
 import {addObjectives} from './../reducers/actions';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Button} from 'react-bootstrap';
+import {next, objectiveAccomplished} from '../reducers/actions';
 import Card from './Card.jsx';
 import Shop from './Shop.jsx';
 import Profile from './Profile.jsx';
@@ -55,7 +56,6 @@ export default class Game extends React.Component {
           )}
       }
       ));}
-          //<Profile type="enemy" pic={round.enemyPic} name ={round.enemyName} I18n={this.props.I18n}></Profile>
 
     if (powerUp){
       if(powerUp !== "none"){
@@ -118,8 +118,45 @@ export default class Game extends React.Component {
             <Col xs={12} xl={2} className="avatarArea">
               <Profile type="ally" pic={round.enemyPic} name ={this.props.user_profile.name}  health={this.props.game.health} score={this.props.game.score} maxScore={this.props.game.maxScore} I18n={this.props.I18n}></Profile>
             </Col>
-      <Feedback dispatch={this.props.dispatch} game={this.props.game} feedback={round.feedback} objective={objective}>
-      </Feedback>
+            <Col xs={12} xl={7}>
+              <Feedback  dispatch={this.props.dispatch} configs= {this.props.configs} game={this.props.game} feedback={round.feedback} objective={objective}>
+              </Feedback>
+            </Col>
+            <Col xs={12} xl={3} className="menuArea">
+              <Row>
+                <Col className="downloadArea text-center">
+                  <Row>               
+                    <Col xs={12} md={6} className="moneyText">
+                    {currentPowerUp}
+                    <p>{this.props.I18n.getTrans("i.bitsInfo") + ": "}</p>
+                    <p className="money">{this.props.game.money}</p>
+                    <Button variant="primary" onClick={() => {
+                      if(this.props.game.powerUp==="skip"){
+                      this.props.dispatch(objectiveAccomplished(this.props.objective.id, 0, this.props.game.powerUp))
+                      } 
+                       this.props.dispatch(next())}}>
+                      Siguiente
+                    </Button>
+                    </Col>
+                    <Col className="downloadIcon" xs={12} md={6}>
+                    <Shop dispatch={this.props.dispatch} game={this.props.game} I18n={this.props.I18n}></Shop>
+                    <p className="text-center downloadButtonText">{this.props.I18n.getTrans("i.downloadButton")}</p>
+                    </Col> 
+                  </Row>
+                </Col>
+              </Row>
+              <Row className="ribbonArea d-flex justify-content-center text-center">
+                <Col>
+                <img className={this.props.game.achievements.first ? "" : "grey"} src="assets/images/medal.png"></img>
+                </Col>
+                <Col>
+                <img className={this.props.game.achievements.second ? "" : "grey"} src="assets/images/money.png"></img>
+                </Col>
+                <Col>
+                <img className={this.props.game.achievements.third ? "" : "grey"} src="assets/images/winner.png"></img>
+                </Col>
+              </Row>
+            </Col>
       </Row>
     );
   }

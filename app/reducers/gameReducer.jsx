@@ -40,7 +40,6 @@ export default function gameReducer(state = {}, action){
     }
     newState.onHold =true;
     newState.feedback.rounds[newState.currentRound]={"chosen": action.payload.index}
-    console.log(newState.feedback)  
     return newState;
   }
   case 'BUY':{

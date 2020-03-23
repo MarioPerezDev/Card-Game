@@ -28,7 +28,7 @@ export class App extends React.Component {
       <InitialScreen dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n}/>
     );
   }else{
-    if((this.props.game.finished !== true) || (GLOBAL_CONFIG.finish_screen === false)){
+    if((this.props.game.finished !== true) || (GLOBAL_CONFIG.finish_screen === false) || this.props.game.onHold){
       appHeader = (
         <Header user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n}/>
       );
