@@ -12,8 +12,6 @@ export default function trackingReducer(state = {}, action){
       }
     }
     return newState;}
-  
-
   case 'OBJECTIVE_ACCOMPLISHED':{
     if(typeof action.objective_id === "undefined"){
       return state; // Objective id not defined
@@ -22,16 +20,14 @@ export default function trackingReducer(state = {}, action){
     if(typeof objective === "undefined"){
       return state; // Objective not found
     }
-
     let updateProgress = (typeof objective.progress_measure === "number" && action.damage > 0);
     if(updateProgress){
       objective.progress_measure = Math.max(0, Math.min(1, objective.progress_measure));
     }
 
     if(action.damage !== 0){
-    objective.accomplished = true;
+      objective.accomplished = true;
     }
-
 
     newState = JSON.parse(JSON.stringify(state));
     objective = Object.assign({}, objective);
@@ -42,27 +38,25 @@ export default function trackingReducer(state = {}, action){
     let maxScore = 0;
     let damage = action.damage;
 
-
-    //Calculate max score
+    //  Calculate max score
     for(let i = 0; i < objectivesIds.length; i++){
       maxScore = maxScore + (Math.max(...gameSettings.rounds[i].ownCards.map((card) => card.power)) - gameSettings.rounds[i].enemyCard.power);
     }
 
-    //Calculate score
-    let currentScore = newState.score*maxScore
+    //  Calculate score
+    let currentScore = newState.score * maxScore;
     if(action.powerUp === "skip"){
-      currentScore = currentScore/2;
+      currentScore = currentScore / 2;
     }
-    if(damage>0){
+    if(damage > 0){
       if(action.powerUp === "x2"){
         damage *= 2;
       }
       currentScore += damage;
-      }
-    newState.score = currentScore/maxScore;
+    }
+    newState.score = currentScore / maxScore;
 
-
-    //Calculate progress
+    //  Calculate progress
     newState.progress_measure = 0;
     for(let i = 0; i < objectivesIds.length; i++){
       if(newState.objectives[objectivesIds[i]].accomplished === true){
@@ -93,7 +87,7 @@ export default function trackingReducer(state = {}, action){
     return newState;}
   case 'START':{
     newState = JSON.parse(JSON.stringify(state));
-      newState.started = true;
+    newState.started = true;
     return newState;}
   default:
     return state;

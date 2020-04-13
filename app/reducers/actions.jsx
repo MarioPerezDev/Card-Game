@@ -12,7 +12,7 @@ export function updateUserProfile(user_profile){
   };
 }
 
-export function addObjectives(objectives){  
+export function addObjectives(objectives){
   return {
     type:'ADD_OBJECTIVES',
     objectives:objectives,
@@ -24,7 +24,6 @@ export function resetObjectives(){
     type:'RESET_OBJECTIVES',
   };
 }
-
 
 export function objectiveAccomplished(objectiveId, damage, powerUp){
   return {
@@ -66,15 +65,15 @@ export function finishApp(finished = true){
 }
 
 export function playCard(power, index){
-  return {type:'PLAY_CARDS', payload: {power, index}}
+  return {type:'PLAY_CARDS', payload:{power, index}};
 }
 
 export function buy(index){
-  return {type:'BUY', payload: {index}}
+  return {type:'BUY', payload:{index}};
 }
 
 export function startGame(){
-  return {type:'START'}
+  return {type:'START'};
 }
 
 export function next(){

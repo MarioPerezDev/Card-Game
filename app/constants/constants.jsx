@@ -24,8 +24,8 @@ export const INITIAL_STATE = {
       "second":false,
       "third":false,
     },
-    powerUp: "none"
-  },  
+    powerUp:"none",
+  },
   scorm:null,
   user_profile:{
     id:undefined,

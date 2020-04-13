@@ -13,5 +13,4 @@ const GlobalState = combineReducers({
   game:gameReducer,
 });
 
-
 export default GlobalState;

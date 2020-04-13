@@ -2,7 +2,6 @@ import React from 'react';
 import {Row, Col, Container} from 'react-bootstrap';
 import {playCard, objectiveAccomplished} from '../reducers/actions';
 
-
 export default class Card extends React.Component {
   constructor(props){
     super(props);
@@ -18,40 +17,40 @@ export default class Card extends React.Component {
     if(this.props.cardClassName.includes("enemyCard")){
       icon = "sword";
     }
-    if (this.props.dispatchable){
+    if(this.props.dispatchable){
       dispatchFunction = () => {
-        (this.props.activePowerUp==="x2") ? this.props.dispatch(objectiveAccomplished(objective.id, damage*2, this.props.currentPowerUp)) : this.props.dispatch(objectiveAccomplished(objective.id, damage, this.props.currentPowerUp)); 
+        (this.props.activePowerUp === "x2") ? this.props.dispatch(objectiveAccomplished(objective.id, damage * 2, this.props.currentPowerUp)) : this.props.dispatch(objectiveAccomplished(objective.id, damage, this.props.currentPowerUp));
         this.props.dispatch(playCard(this.props.power, this.props.number));
-      }
-    }else{
+      };
+    } else {
       dispatchFunction = () =>{
-        alert(this.props.I18n.getTrans("i.disabledCard"))
+        alert(this.props.I18n.getTrans("i.disabledCard"));
       };
     }
     return (
-      <div className={this.props.cardClassName+ " card"} onClick={dispatchFunction}>
+      <div className={this.props.cardClassName + " card"} onClick={dispatchFunction}>
         <Container>
-        <Row xs={2} style={{marginTop:"5px"}}>
-          <Col id="number" className="card-number">
-            {this.props.number}
-          </Col>
-          <Col xs={8} className="card-name">
-            {this.props.name}
-          </Col>
-          <Col xs={2}  className="powerIcon">
-          <img src={"assets/images/" + icon + ".png"}></img>
-          </Col>
-        </Row>
-        <Row className="card-image">
-          <Col>
-            <img src={this.props.image} alt="cardimage"/>
-          </Col>
-        </Row>
-        <Row className="card-power-text">
-          <Col>
-          <p>{this.props.powerinfo}</p>
-          </Col>
-        </Row>
+          <Row xs={2} style={{marginTop:"5px"}}>
+            <Col id="number" className="card-number">
+              {this.props.number}
+            </Col>
+            <Col xs={8} className="card-name">
+              {this.props.name}
+            </Col>
+            <Col xs={2} className="powerIcon">
+              <img src={"assets/images/" + icon + ".png"}/>
+            </Col>
+          </Row>
+          <Row className="card-image">
+            <Col>
+              <img src={this.props.image} alt="cardimage"/>
+            </Col>
+          </Row>
+          <Row className="card-power-text">
+            <Col>
+              <p>{this.props.powerinfo}</p>
+            </Col>
+          </Row>
         </Container>
       </div>
     );
