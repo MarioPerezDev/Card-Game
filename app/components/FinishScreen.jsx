@@ -37,7 +37,7 @@ export default class FinishScreen extends React.Component {
     let finishTitleText = this._getFinishScreenTitle(this.props.tracking.progress_measure, this.props.tracking.score);
     let chosen = this.props.game.feedback.rounds[this.state.currentAnswer].chosen;
     return (
-      <Container>
+      <Container >
         <Row>
           <Col>
             <div className="finish_screen">
@@ -45,23 +45,33 @@ export default class FinishScreen extends React.Component {
             </div>
           </Col>
         </Row>
+        <Row className="finishScreenArea">
+          <Col xs={4}>
+            <h3>{this.props.I18n.getTrans("i.finish_screen_card_anouncer")}</h3>
+            <div className="feedbackCard text-justify">
+              <div className="feedbackCardTitle text-center">{this.props.configs.rounds[this.state.currentAnswer].enemyCard.name}</div>
+              <div className="feedbackCardText text-justify">{this.props.configs.rounds[this.state.currentAnswer].enemyCard.powerinfo}</div>
+            </div>
+          </Col>
+          <Col xs={4}>
+            <h3>{this.props.I18n.getTrans("i.finish_screen_card_played_anouncer")}</h3>
+            <div className="feedbackCard text-justify">
+              <div className="feedbackCardTitle text-center">{this.props.configs.rounds[this.state.currentAnswer].ownCards[chosen - 1].name}</div>
+              <div className="feedbackCardText text-justify">{this.props.configs.rounds[this.state.currentAnswer].ownCards[chosen - 1].powerinfo}</div>
+            </div>
+          </Col>
+          <Col xs={4}>
+            <h3>{this.props.I18n.getTrans("i.finish_screen_text")}</h3>
+            <div>
+              <div>{this.props.configs.rounds[this.state.currentAnswer].ownCards[chosen - 1].feedback}</div>
+            </div>
+          </Col>
+        </Row>
         <Row>
-          <Col xs={4}>
-            <h3>Ante la carta</h3>
-            <div>{this.props.configs.rounds[this.state.currentAnswer].enemyCard.name}</div>
-            <div>{this.props.configs.rounds[this.state.currentAnswer].enemyCard.powerinfo}</div>
+          <Col>
+            <Button disabled= {this.state.currentAnswer <= 0} onClick={this.previous}>Anterior</Button>
+            <Button disabled= {this.state.currentAnswer === this.props.configs.rounds.length - 1} onClick={this.next}>Siguiente</Button>
           </Col>
-          <Col xs={4}>
-            <h3>Jugaste la carta la carta</h3>
-            <div>{this.props.configs.rounds[this.state.currentAnswer].ownCards[chosen - 1].name}</div>
-            <div>{this.props.configs.rounds[this.state.currentAnswer].ownCards[chosen - 1].powerinfo}</div>
-          </Col>
-          <Col xs={4}>
-            <h3>Comenatrio sobre la elección</h3>
-            <div>{this.props.configs.rounds[this.state.currentAnswer].ownCards[chosen - 1].feedback}</div>
-          </Col>
-          <Button disabled= {this.state.currentAnswer <= 0} onClick={this.previous}>Anterior</Button>
-          <Button disabled= {this.state.currentAnswer === this.props.configs.rounds.length - 1} onClick={this.next}>Siguiente</Button>
         </Row>
       </Container>
     );
