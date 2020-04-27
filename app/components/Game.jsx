@@ -169,7 +169,7 @@ export default class Game extends React.Component {
           </Col>
 
           <Col xs={12} lg={4} xl={3}>
-            <div className="enemyDialog speech-bubble">
+            <div className="enemyDialog speech-bubble text-justify">
               <p>
                 {round.roundText}
               </p>

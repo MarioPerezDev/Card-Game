@@ -20,7 +20,7 @@ export default function trackingReducer(state = {}, action){
     if(typeof objective === "undefined"){
       return state; // Objective not found
     }
-    let updateProgress = (typeof objective.progress_measure === "number" && action.damage > 0);
+    let updateProgress = (typeof objective.progress_measure === "number");
     if(updateProgress){
       objective.progress_measure = Math.max(0, Math.min(1, objective.progress_measure));
     }
